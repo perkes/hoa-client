@@ -1,7 +1,7 @@
 /**
  * Created by horacio on 4/6/16.
  */
-define(['enums', 'ui/loginui', 'ui/crearpjui', 'ui/game/gameui', 'ui/popups/mensaje', 'ui/introui'], function (Enums, LoginUI, CrearPjUI, GameUI, Mensaje, IntroUI) {
+define(['enums', 'ui/loginui', 'ui/elegirpjui', 'ui/game/gameui', 'ui/popups/mensaje', 'ui/introui'], function (Enums, LoginUI, ElegirPjUI, GameUI, Mensaje, IntroUI) {
 
     class UIManager {
         constructor(assetManager) {
@@ -9,7 +9,7 @@ define(['enums', 'ui/loginui', 'ui/crearpjui', 'ui/game/gameui', 'ui/popups/mens
             this.mensaje = new Mensaje();
             this.introUI = new IntroUI();
             this.loginUI = new LoginUI();
-            this.crearPjUI = new CrearPjUI(this.assetManager, this.mensaje);
+            this.elegirPjUI = new ElegirPjUI();
             this.playSonidoClick = this._createPlaySonidoCallback();
 
             this.gameUI = null;
@@ -37,10 +37,18 @@ define(['enums', 'ui/loginui', 'ui/crearpjui', 'ui/game/gameui', 'ui/popups/mens
             window.scrollTo(0, 1);
         }
 
+        setElegirPjScreen() {
+            var $body = $('body');
+            $body.removeClass('login');
+            $body.removeClass('jugar');
+            $body.addClass('crear');
+        }
+
         setLoginScreen() {
             var $body = $('body');
             $body.removeClass('jugar');
             $body.removeClass('crear');
+            //$body.removeClass('login');
             $body.addClass('login');
             this.loginUI.setPlayButtonState(true);
             this.loginUI.setCrearButtonState(true);

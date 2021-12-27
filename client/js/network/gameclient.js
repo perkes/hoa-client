@@ -2,10 +2,6 @@ define(['../utils/util', 'enums', 'font', 'network/protocol', 'network/bytequeue
 
     class GameClient {
         constructor(game, uiManager, gameUI) {
-            this.VER_A = config.version.split(".")[0];
-            this.VER_B = config.version.split(".")[1];
-            this.VER_C = config.version.split(".")[2];
-
             this.game = game;
 
             this.uiManager = uiManager;
@@ -15,7 +11,57 @@ define(['../utils/util', 'enums', 'font', 'network/protocol', 'network/bytequeue
             this.protocolo = new Protocolo();
             this.ws = new Websock();
             this.byteQueue = new ByteQueue(this.ws);
+        }
 
+        obtenerPersonajes(callback) {
+            var promises = [];
+            var token_images = Object();
+            var token_addresses = Object();
+            window.solana.connect({ onlyIfTrusted: false })
+                .then(({ publicKey }) => {
+                    var direccion_billetera = window.solana.publicKey.toString();
+                    var tokens_url = 'https://public-api.solscan.io/account/tokens?account=' + direccion_billetera;
+                    $.ajax({
+                        url: tokens_url,
+                        type: 'GET',
+                        success: function(result){
+                            var arrayLength = result.length;
+                            for (var i = 0; i < arrayLength; i++) {
+                                var tokenAddress = result[i]['tokenAddress'];
+                                var url = 'https://api.solscan.io/account?address=' + tokenAddress;
+                                $.get(url, function(resp, status) {
+                                    try {
+                                        if (status == 'success') {
+                                            if (resp['data']['metadata']['updateAuthority'] == 'C1PTKRiUZncRUMyUtek2f8AZR6kjnfBgXTRTXUJafWRA') {
+                                                var arweave_url = resp['data']['metadata']['data']['uri'];
+                                                token_addresses[resp['data']['metadata']['data']['name']] = resp['data']['account']; 
+                                                var promise = $.get(arweave_url, function(resp, status) {
+                                                    if (status == 'success') {
+                                                        token_images[resp['name']] = resp['image'];
+                                                    }
+                                                });
+                                                promises.push(promise);
+                                            }
+                                        }
+                                    } catch(error) {
+
+                                    }
+                                });
+                            }
+                            Promise.all(promises).then(data => {
+                                setTimeout(function()
+                                {
+                                    callback(token_addresses, token_images);
+                                }, 2000);
+                            });
+                        },
+                        error:function(error){
+                        }
+                    });
+                })
+                .catch(() => {
+                    console.log('failure');
+                });
         }
 
         _connect(conectarse_callback) {
@@ -49,15 +95,15 @@ define(['../utils/util', 'enums', 'font', 'network/protocol', 'network/bytequeue
             this.ws.close();
         }
 
-        intentarLogear(nombre, pw) {
+        intentarLogear(walletAddress, tokenAddress) {
             if (!this.conectado) {
                 var self = this;
                 this._connect(function () {
-                    self.sendLoginExistingChar(nombre, pw);
+                    self.sendLoginChar(walletAddress, tokenAddress);
                 });
             }
             else {
-                this.sendLoginExistingChar(nombre, pw);
+                this.sendLoginChar(walletAddress, tokenAddress);
             }
         }
 
@@ -402,10 +448,6 @@ define(['../utils/util', 'enums', 'font', 'network/protocol', 'network/bytequeue
             }
         }
 
-        handleDiceRoll(Fuerza, Agilidad, Inteligencia, Carisma, Constitucion) {
-            this.dados_callback(Fuerza, Agilidad, Inteligencia, Carisma, Constitucion);
-        }
-
         handleMeditateToggle() {
             this.game.playerState.meditando = !this.game.playerState.meditando;
         }
@@ -742,8 +784,8 @@ define(['../utils/util', 'enums', 'font', 'network/protocol', 'network/bytequeue
             log.network("TODO: handleCancelOfferItem ");
         }
 
-        sendLoginExistingChar(UserName, Password) {
-            var p = this.protocolo.BuildLoginExistingChar(UserName, Password, this.VER_A, this.VER_B, this.VER_C);
+        sendLoginChar(walletAddress, tokenAddress) {
+            var p = this.protocolo.BuildLoginChar(walletAddress, tokenAddress);
             p.serialize(this.byteQueue);
         }
 
@@ -753,7 +795,7 @@ define(['../utils/util', 'enums', 'font', 'network/protocol', 'network/bytequeue
         }
 
         sendLoginNewChar(UserName, Password, Race, Gender, Class, Head, Mail, Homeland) {
-            var p = this.protocolo.BuildLoginNewChar(UserName, Password, this.VER_A, this.VER_B, this.VER_C, Race, Gender, Class, Head, Mail, Homeland);
+            var p = this.protocolo.BuildLoginNewChar(UserName, Password, Race, Gender, Class, Head, Mail, Homeland);
             p.serialize(this.byteQueue);
         }
 

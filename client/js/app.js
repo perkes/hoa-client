@@ -1,5 +1,4 @@
 define(['model/gamemanager', 'view/renderer', 'network/gameclient'], function (GameManager, Renderer, GameClient) {
-
     class App {
         constructor(assetManager, uiManager, settings) {
             this.assetManager = assetManager;
@@ -7,25 +6,19 @@ define(['model/gamemanager', 'view/renderer', 'network/gameclient'], function (G
             this.client = null;
             this.ready = false;
             this.settings = settings;
-            this._connectToSolanaWallet();
-        }
-
-        async _connectToSolanaWallet() {
-            try {
-                const resp = await window.solana.connect();
-                console.log(resp.publicKey.toString());
-            } catch (err) {
-                console.log('error');
-            }
         }
 
         _initLoginCallbacks() {
             var self = this;
             this.uiManager.loginUI.setBotonJugarCallback(function () {
-                self.tryStartingGame();
+                self.setElegirPJ();
             });
-            this.uiManager.loginUI.setBotonCrearCallback(function () {
-                self.setCrearPJ();
+        }
+
+        _initElegirPjCallbacks() {
+            var self = this;
+            this.uiManager.elegirPjUI.setBotonVolverCallback(function () {
+                self.uiManager.setLoginScreen();
             });
         }
 
@@ -75,7 +68,38 @@ define(['model/gamemanager', 'view/renderer', 'network/gameclient'], function (G
             this.ready = true;
         }
 
+        setElegirPJ() {
+            this.uiManager.elegirPjUI.inicializar();
+            this.uiManager.loginUI.setCrearButtonState(false);
+            var self = this;
+
+            this.client.obtenerPersonajes(function(token_addresses, token_images) {
+                self.uiManager.setElegirPjScreen();
+                self.uiManager.elegirPjUI.mostrarPersonajes(token_images);
+                self.addCharacterLoginHooks(token_addresses, token_images);
+            });
+        }
+
+        addCharacterLoginHooks(token_addresses, token_images) {
+            var self = this;
+            for (let i in token_images) {
+                if (token_images.hasOwnProperty(i)) {
+                    var id = i.replace('#', '').replace(' ', '_');
+                    $('#' + id).click(function () {
+                        self.tryStartingGameNew(token_addresses[i]);
+                    });
+                }
+            }
+        }
+
+        tryStartingGameNew(token_address) {
+            var wallet_address = window.solana.publicKey.toString();
+            this.gameManager.game.inicializar(null);
+            this.client.intentarLogear(wallet_address, token_address);
+        }
+
         setCrearPJ() {
+            //this.setElegirPJ();
             this.uiManager.crearPjUI.inicializar();
             this.uiManager.loginUI.setCrearButtonState(false);
             var self = this;
@@ -119,7 +143,6 @@ define(['model/gamemanager', 'view/renderer', 'network/gameclient'], function (G
 
         start() {
             this._initLoginCallbacks();
-            this._initCrearPjCallbacks();
             this.uiManager.hideIntro();
             this.inicializarGame();
 

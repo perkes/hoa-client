@@ -222,7 +222,7 @@ define(['model/mapa', 'updater', 'model/item', 'model/character', 'model/atribut
                 this.world.addCharacter(c);
                 this.setCharacterFX(CharIndex, FX, FXLoops);
 
-                if ((!this.player) && ( this.username.toUpperCase() === nombre.toUpperCase())) { // mal esto, se deberia hacer comparando el charindex pero no se puede porque el server manda el char index del pj despues de crear los chars
+                if ((!this.player)) { //&& ( this.username.toUpperCase() === nombre.toUpperCase())) { // mal esto, se deberia hacer comparando el charindex pero no se puede porque el server manda el char index del pj despues de crear los chars
                     this.player = c;
                     this.actualizarIndicadorPosMapa();
                 }

@@ -9,3 +9,5 @@ config_local*
 .idea
 *.sublime-project
 *.sublime-workspace
+/client/node_modules/
+/client/.vscode
