@@ -4,9 +4,6 @@
 
  define([], function () {
     class ElegirPjUI {
-        constructor() {
-            
-        }
 
         inicializar() {
 
@@ -35,7 +32,7 @@
             }
         }
 
-        mostrarPersonajes(token_images) {
+        showCharacters(token_images) {
             var table = '<tr>';
             for (let i in token_images) {
                 if (token_images.hasOwnProperty(i)) {

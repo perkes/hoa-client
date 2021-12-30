@@ -1,4 +1,4 @@
-define(['model/gamemanager', 'view/renderer', 'network/gameclient'], function (GameManager, Renderer, GameClient) {
+define(['model/gamemanager', 'view/renderer', 'network/gameclient', 'utils/wallet'], function (GameManager, Renderer, GameClient, Wallet) {
     class App {
         constructor(assetManager, uiManager, settings) {
             this.assetManager = assetManager;
@@ -6,6 +6,7 @@ define(['model/gamemanager', 'view/renderer', 'network/gameclient'], function (G
             this.client = null;
             this.ready = false;
             this.settings = settings;
+            this.wallet = new Wallet();
         }
 
         _initLoginCallbacks() {
@@ -73,9 +74,9 @@ define(['model/gamemanager', 'view/renderer', 'network/gameclient'], function (G
             this.uiManager.loginUI.setCrearButtonState(false);
             var self = this;
 
-            this.client.obtenerPersonajes(function(token_addresses, token_images) {
+            this.wallet.getCharacters(function(token_addresses, token_images) {
                 self.uiManager.setElegirPjScreen();
-                self.uiManager.elegirPjUI.mostrarPersonajes(token_images);
+                self.uiManager.elegirPjUI.showCharacters(token_images);
                 self.addCharacterLoginHooks(token_addresses, token_images);
             });
         }
