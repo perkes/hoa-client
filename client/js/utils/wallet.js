@@ -1,5 +1,10 @@
 define([], function () {
     class Wallet {
+
+        get address() {
+            return window.solana.publicKey.toString();
+        }
+
         async signToken(message) {
             const encodedMessage = new TextEncoder().encode(message);
             const signedMessage = await window.solana.request({

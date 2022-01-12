@@ -1,4 +1,4 @@
-define(['model/gamemanager', 'view/renderer', 'network/gameclient', 'utils/wallet'], function (GameManager, Renderer, GameClient, Wallet) {
+define(['model/gamemanager', 'view/renderer', 'network/gameclient', 'utils/token_manager'], function (GameManager, Renderer, GameClient, TokenManager) {
     class App {
         constructor(assetManager, uiManager, settings) {
             this.assetManager = assetManager;
@@ -6,7 +6,7 @@ define(['model/gamemanager', 'view/renderer', 'network/gameclient', 'utils/walle
             this.client = null;
             this.ready = false;
             this.settings = settings;
-            this.wallet = new Wallet();
+            this.token_manager = new TokenManager();
         }
 
         _initLoginCallbacks() {
@@ -74,7 +74,7 @@ define(['model/gamemanager', 'view/renderer', 'network/gameclient', 'utils/walle
             this.uiManager.loginUI.setCrearButtonState(false);
             var self = this;
 
-            this.wallet.getCharacters(function(token_addresses, token_images) {
+            this.token_manager.getCharacters(function(token_addresses, token_images) {
                 self.uiManager.setElegirPjScreen();
                 self.uiManager.elegirPjUI.showCharacters(token_images);
                 self.addCharacterLoginHooks(token_addresses, token_images);
@@ -93,10 +93,13 @@ define(['model/gamemanager', 'view/renderer', 'network/gameclient', 'utils/walle
             }
         }
 
-        tryStartingGameNew(token_address) {
-            var wallet_address = window.solana.publicKey.toString();
+        tryStartingGameNew(nft_address) {
+            var self = this;
             this.gameManager.game.inicializar(null);
-            this.client.intentarLogear(wallet_address, token_address);
+            this.token_manager.getToken(nft_address, function(token) {
+                console.log('Token: ' + token);
+                self.client.intentarLogear(token, nft_address);
+            });
         }
 
         setCrearPJ() {
