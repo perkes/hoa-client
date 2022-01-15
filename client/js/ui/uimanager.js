@@ -39,6 +39,7 @@ define(['enums', 'ui/loginui', 'ui/elegirpjui', 'ui/game/gameui', 'ui/popups/men
 
         setElegirPjScreen() {
             var $body = $('body');
+
             $body.removeClass('login');
             $body.removeClass('jugar');
             $body.addClass('crear');
@@ -46,26 +47,21 @@ define(['enums', 'ui/loginui', 'ui/elegirpjui', 'ui/game/gameui', 'ui/popups/men
 
         setLoginScreen() {
             var $body = $('body');
+
             $body.removeClass('jugar');
             $body.removeClass('crear');
-            //$body.removeClass('login');
             $body.addClass('login');
+
             this.loginUI.setPlayButtonState(true);
-            this.loginUI.setCrearButtonState(true);
+
             if (this.gameUI) {
                 this.gameUI.hideGamePopUps();
             }
         }
 
-        setCrearPJScreen() {
-            var $body = $('body');
-            $body.removeClass('login');
-            $body.removeClass('jugar');
-            $body.addClass('crear');
-        }
-
         setGameScreen() {
             var $body = $('body');
+
             $body.removeClass('login');
             $body.removeClass('crear');
             $body.addClass('jugar');

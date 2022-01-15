@@ -7222,6 +7222,7 @@ button.close {
 
   .carousel-indicators {
     bottom: 20px; } }
+
 .clearfix:before, .clearfix:after {
   content: " ";
   display: table; }
@@ -7437,11 +7438,21 @@ button.close {
 
 @media print {
   .hidden-print {
-    display: none !important; } }
+    display: none !important; 
+  } 
+}
+
 .horizontal_center, #crearPjDiv select {
   text-align: center;
   display: block;
-  margin: 0 auto; }
+  margin: 0 auto; 
+}
+
+.horizontal_center_force {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
 
 .vertical_center_container {
   width: 100%;
@@ -7904,6 +7915,20 @@ input:-webkit-autofill:focus {
 .background_default, .dialog_default {
   background: url("../imagenes/background.png") repeat; }
 
+.my-inner {       
+  border-top: 10px;
+  border-left: 10px;
+  border-right: 10px;
+  border-bottom: 10px;
+  border-color: #241d1a;
+  border-style: solid;
+}
+
+.with-border {
+  display: block;
+  width: 15%;
+}
+
 html, body {
   width: 100%;
   height: 100%; }
@@ -7911,7 +7936,7 @@ html, body {
 body {
   padding: 0;
   margin: 0;
-  background: url("../imagenes/background_images/login.png");
+  background: url("../imagenes/background_images/fondo5.gif");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -8056,9 +8081,18 @@ footer a {
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;
-  height: 25%;
-  min-height: 180px;
-  max-height: 240px; }
+  min-height: 256px;
+}
+
+#small-logo {
+  background: url("../imagenes/logo.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: 50px;
+  width: 100%;
+  min-height: 200px;
+}
 
 #loginBox {
   margin-top: 8vh;
@@ -8075,8 +8109,9 @@ footer a {
   margin-top: 1vh;
   margin-bottom: 2.4vh; }
 
-#botonCrearPJ {
-  margin-bottom: 1.6vh; }
+#carousel_pcs {
+  padding-bottom: 20px;
+}
 
 #crearPjDiv select {
   max-width: 180px;

@@ -5,13 +5,23 @@
  define([], function () {
     class ElegirPjUI {
 
-        inicializar() {
+        constructor() {
+            this.currentCharacterAddress = null;
+            this.loaded = false;
+        }
 
+        inicializar() {
+            
+        }
+
+        get currentNFTAddress() {
+            return this.currentCharacterAddress;
         }
 
         setBotonJugarCallback(cb) {
+            var self = this;
             $('#botonJugar').click(function () {
-                cb();
+                cb(self.currentCharacterAddress);
             });
         }
 
@@ -32,17 +42,37 @@
             }
         }
 
-        showCharacters(token_images) {
-            var table = '<tr>';
+        showCharacters(token_addresses, token_images) {
+            if (this.loaded)
+                return;
+            
+            var table = '';
+            var class_name = 'item active';
+            var self = this;
+
             for (let i in token_images) {
                 if (token_images.hasOwnProperty(i)) {
                     var id = i.replace('#', '').replace(' ', '_');
-                    table += '<td><img id="' + id + '" style="width:128px;height:128px;padding:10px;" src="' + token_images[i] + '" alt="character"></td>';
+                    table += '<div class="' + class_name + '"><img id="' + id + '" src="' + token_images[i] + '"></div>';
                 }
+                class_name = 'item';
             }
-            table += '</tr>'
-            $('#charactersTable').append(table);
+
+            $('.carousel-inner').append(table);
+
+            var token_ids = Object.keys(token_images);
+            var total_characters = token_ids.length;
+            var i = 1;
+
+            this.currentCharacterAddress = token_addresses[token_ids[0]];
+            $('#carousel_pcs').on('slide.bs.carousel', function(e) {
+                self.currentCharacterAddress = token_addresses[token_ids[i%total_characters]];
+                i += 1;
+            });
+
+            this.loaded = true;
         }
     }
+
     return ElegirPjUI;
 });

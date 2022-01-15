@@ -1,6 +1,19 @@
 define([], function () {
     class Wallet {
 
+        constructor() {
+            this.token_addresses = null;
+            this.token_images = null;
+        }
+
+        get tokenAddresses() {
+            return this.token_addresses;
+        }
+
+        get tokenImages() {
+            return this.token_images;
+        }
+
         get address() {
             return window.solana.publicKey.toString();
         }
@@ -21,6 +34,7 @@ define([], function () {
             var promises = [];
             var token_images = Object();
             var token_addresses = Object();
+            var self = this;
             window.solana.connect({onlyIfTrusted: false}).then(() => {
                 var wallet_address = window.solana.publicKey.toString();
                 var tokens_url = 'https://public-api.solscan.io/account/tokens?account=' + wallet_address;
@@ -55,6 +69,8 @@ define([], function () {
                             setTimeout(function()
                             {
                                 callback(token_addresses, token_images);
+                                self.token_addresses = token_addresses;
+                                self.token_images = token_images;
                             }, 5000);
                         });
                     }

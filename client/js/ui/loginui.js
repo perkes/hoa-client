@@ -4,46 +4,15 @@
 
 define(['utils/charcodemap'], function (CharcodeMap) {
     class LoginUI {
-        constructor() {
-            this.enableLoginPressingEnter();
-        }
 
         setBotonJugarCallback(cb) {
-            $('#botonJugar').click(function () {
+            $('#botonConectar').click(function () {
                 cb();
-            });
-        }
-
-        setBotonCrearCallback(cb) {
-            $('#botonCrearPJ').click(function () {
-                cb();
-            });
-        }
-
-        enableLoginPressingEnter() {
-
-            let loginKeyPressFunc = (keyNumber) => {
-
-                if (keyNumber === CharcodeMap.keys.indexOf("ENTER")) {
-                    let $playButton = $('#botonJugar');
-                    if (!$playButton.prop('disabled')) {
-                        $playButton.click();
-                    }
-                    return false;
-                }
-            };
-
-            $('#loginNombre').keypress(function (e) {
-                loginKeyPressFunc(e.which);
-            });
-
-            $('#loginContrasenia').keypress(function (e) {
-                loginKeyPressFunc(e.which);
             });
         }
 
         setPlayButtonState(enabled) {
-            var $playButton = $('#botonJugar');
+            var $playButton = $('#botonConectar');
 
             if (enabled) {
                 $playButton.prop('disabled', false);
@@ -51,24 +20,7 @@ define(['utils/charcodemap'], function (CharcodeMap) {
                 $playButton.prop('disabled', true);
             }
         }
-
-        setCrearButtonState(enabled) {
-            var $crearButton = $('#botonCrearPJ');
-
-            if (enabled) {
-                $crearButton.prop('disabled', false);
-            } else {
-                $crearButton.prop('disabled', true);
-            }
-        }
-
-        getUsername() {
-            return $('#loginNombre').val();
-        }
-
-        getPassword() {
-            return $('#loginContrasenia').val();
-        }
     }
+
     return LoginUI;
 });

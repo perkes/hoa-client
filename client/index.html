@@ -10,6 +10,7 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Heroes of Argentum">
     <meta property="og:description" content="Heroes of Argentum">
+    <link rel="stylesheet" href="css/flickity.min.css" media="screen">
     <link rel="stylesheet" href="css/main.css" type="text/css">
     <title>Heroes of Argentum</title>
 
@@ -54,21 +55,32 @@
     <!-- Pantalla de conectar -->
     <div id="conectar" class="vertical_center_container" style="justify-content: center;">
         <div id="logo" class="horizontal_center noselect"></div>
-        <div id="loginBox" class="exterior_border_default background_default horizontal_center">
-            <div class="inner_border_default">
-                <div class="form-group">
-                    <button id="botonJugar" class="btn btn-default horizontal_center margenBoton">Conectar</button>
-                </div>
-            </div>
+        <div id="loginBox" class="horizontal_center">
+            <button id="botonConectar" class="btn btn-default horizontal_center margenBoton">Connect</button>  
         </div>
     </div>
 
-    <!-- Pantalla de crear PJ -->
-    <div id="crearPJ" style="width:100%; height:100%;">
-        <div class="container" style="position: relative;">
-            <table style="margin: 0 auto; top: 50%;" id=charactersTable>
-                
-            </table>
+    <!-- Pantalla de elegir PJ -->
+
+    <div id="crearPJ" class="vertical_center_container" style="justify-content: center;">
+        <div id="small-logo" class="horizontal_center noselect"></div>
+        <div class="horizontal_center noselect" style="padding-top:3em;">
+            <div id="carousel_pcs" class="carousel horizontal_center with-border slide" data-interval="false">
+                <div class="carousel-inner my-inner">
+                    
+                </div>
+                <a class="left carousel-control" href="#carousel_pcs" role="button" data-slide="prev">
+                <span class="icon-prev" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel_pcs" role="button" data-slide="next">
+                <span class="icon-next" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+                </a>
+            </div>
+            <div class="horizontal_center">
+                <button id="botonJugar" class="btn btn-default horizontal_center margenBoton">Play</button>
+            </div>
         </div>
     </div>
 
@@ -150,14 +162,15 @@
 
 
 <footer>
-    <div id="sharing" class="clickable">
+    <!--div id="sharing" class="clickable">
         Comparti en
         <a href="https://twitter.com/HeroesArgentum" class="twitter"></a>
-    </div>
+    </div-->
 </footer>
 
 <script src="js/lib/modernizr.js" type="text/javascript"></script>
 <script src="js/detect.js" type="text/javascript"></script>
+
 <script type="text/javascript">
     if (!Detect.supportsWebSocket()) {
         alert("Tu navegador no soporta websockets, para jugar debes actualizarlo")

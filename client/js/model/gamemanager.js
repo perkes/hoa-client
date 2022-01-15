@@ -7,7 +7,7 @@ define(['model/game', 'model/intervalos', 'model/acciones', 'model/comandoschat'
     class GameManager {
         constructor(assetManager, renderer) {
             this.renderer = renderer; // temporal, pasarselo directamente al constructor de game ?
-            this.assetManaget = assetManager;
+            this.assetManager = assetManager;
             this.game = new Game(assetManager);
 
             this.intervalos = new Intervalos();
@@ -16,7 +16,7 @@ define(['model/game', 'model/intervalos', 'model/acciones', 'model/comandoschat'
         }
 
         setup(client, gameUI) {
-            this.game.setup(client, gameUI, this.renderer, this.assetManaget.audio);
+            this.game.setup(client, gameUI, this.renderer, this.assetManager.audio);
         }
 
         resetGame(escala) {
@@ -24,9 +24,9 @@ define(['model/game', 'model/intervalos', 'model/acciones', 'model/comandoschat'
             var ui = this.game.gameUI;
             var client = this.game.client;
             
-            this.assetManaget.audio.reset();
-            this.game.init(this.assetManaget);
-            this.game.setup(client, ui, this.renderer, this.assetManaget.audio);
+            this.assetManager.audio.reset();
+            this.game.init(this.assetManager);
+            this.game.setup(client, ui, this.renderer, this.assetManager.audio);
         }
 
     }

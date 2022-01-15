@@ -23,24 +23,11 @@ define(['model/gamemanager', 'view/renderer', 'network/gameclient', 'utils/token
             });
         }
 
-        _initCrearPjCallbacks() {
-            var self = this;
-            this.uiManager.crearPjUI.setBotonTirarDadosCallback(function () {
-                self.client.sendThrowDices();
-            });
-            this.uiManager.crearPjUI.setBotonVolverCallback(function () {
-                self.uiManager.setLoginScreen();
-            });
-            this.uiManager.crearPjUI.setBotonCrearCallback(function (nombre, password, raza, genero, clase, cabeza, mail, ciudad) {
-                self.startGame(true, nombre, password, raza, genero, clase, cabeza, mail, ciudad);
-            });
-        }
-
         _initClientCallbacks(client) {
             var self = this;
 
             client.setDisconnectCallback(function () {
-                self.uiManager.setLoginScreen();
+                self.uiManager.setElegirPjScreen();
                 self.assetManager.audio.stopMusic();
                 self.gameManager.resetGame(self.uiManager.escala);
                 self.starting = false;
@@ -51,11 +38,6 @@ define(['model/gamemanager', 'view/renderer', 'network/gameclient', 'utils/token
                 self.uiManager.setGameScreen();
                 self.starting = false;
             });
-
-            client.setDadosCallback(function (Fuerza, Agilidad, Inteligencia, Carisma, Constitucion) {
-                self.uiManager.crearPjUI.updateDados(Fuerza, Agilidad, Inteligencia, Carisma, Constitucion);
-            });
-
         }
 
         inicializarGame() {
@@ -71,78 +53,19 @@ define(['model/gamemanager', 'view/renderer', 'network/gameclient', 'utils/token
 
         setElegirPJ() {
             this.uiManager.elegirPjUI.inicializar();
-            this.uiManager.loginUI.setCrearButtonState(false);
             var self = this;
 
             this.token_manager.getCharacters(function(token_addresses, token_images) {
                 self.uiManager.setElegirPjScreen();
-                self.uiManager.elegirPjUI.showCharacters(token_images);
-                self.addCharacterLoginHooks(token_addresses, token_images);
-            });
-        }
-
-        addCharacterLoginHooks(token_addresses, token_images) {
-            var self = this;
-            for (let i in token_images) {
-                if (token_images.hasOwnProperty(i)) {
-                    var id = i.replace('#', '').replace(' ', '_');
-                    $('#' + id).click(function () {
-                        self.tryStartingGameNew(token_addresses[i]);
+                self.uiManager.elegirPjUI.showCharacters(token_addresses, token_images);
+                self.uiManager.elegirPjUI.setBotonJugarCallback(function () {
+                    var nft_address = self.uiManager.elegirPjUI.currentNFTAddress;
+                    self.gameManager.game.inicializar(null);
+                    self.token_manager.getToken(nft_address, function(token) {
+                        self.client.intentarLogear(token, nft_address);
                     });
-                }
-            }
-        }
-
-        tryStartingGameNew(nft_address) {
-            var self = this;
-            this.gameManager.game.inicializar(null);
-            this.token_manager.getToken(nft_address, function(token) {
-                console.log('Token: ' + token);
-                self.client.intentarLogear(token, nft_address);
+                });
             });
-        }
-
-        setCrearPJ() {
-            //this.setElegirPJ();
-            this.uiManager.crearPjUI.inicializar();
-            this.uiManager.loginUI.setCrearButtonState(false);
-            var self = this;
-
-            this.client.intentarCrearPersonaje(function () {
-                self.uiManager.setCrearPJScreen();
-                self.uiManager.loginUI.setCrearButtonState(true);
-            });
-        }
-
-        tryStartingGame() {
-            if (this.starting) {
-                return;
-            }
-
-            log.info(" Trying to start game...");
-
-            var username = this.uiManager.loginUI.getUsername();
-            var userpw = this.uiManager.loginUI.getPassword();
-            if (!this.validarLogin(username, userpw)) {
-                return;
-            }
-
-            this.starting = true;
-            this.uiManager.loginUI.setPlayButtonState(false);
-            this.startGame(false, username, userpw);
-        }
-
-        startGame(newChar, username, userpw, raza, genero, clase, cabeza, mail, ciudad) {
-            if (this.gameManager.game.started) {
-                return;
-            }
-            this.gameManager.game.inicializar(username);
-            if (!newChar) {
-                this.client.intentarLogear(username, userpw);
-            }
-            else {
-                this.client.sendLoginNewChar(username, userpw, raza, genero, clase, cabeza, mail, ciudad);
-            }
         }
 
         start() {
@@ -152,21 +75,7 @@ define(['model/gamemanager', 'view/renderer', 'network/gameclient', 'utils/token
 
             log.info("App initialized.");
         }
-
-        validarLogin(username, userpw) {
-            if (!username) {
-                this.uiManager.showMensaje("Debes ingresar un usuario");
-                return false;
-            }
-
-            if (!userpw) {
-                this.uiManager.showMensaje("Debes ingresar un password");
-                return false;
-            }
-
-            return true;
-        }
-
     }
+
     return App;
 });
