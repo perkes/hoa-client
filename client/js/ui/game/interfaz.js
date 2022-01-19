@@ -133,11 +133,11 @@ define(['utils/charcodemap', 'ui/game/itemgrid'], function (CharCodeMap, ItemGri
         }
 
         updateAgilidad(agi) {
-            $("#indicadorAgilidad").text("A: " + agi);
+            $("#indicadorAgilidad").text("D: " + agi);
         }
 
         updateFuerza(fuerza) {
-            $("#indicadorFuerza").text("F: " + fuerza);
+            $("#indicadorFuerza").text("S: " + fuerza);
         }
 
         updateOro(oro) {
@@ -182,7 +182,7 @@ define(['utils/charcodemap', 'ui/game/itemgrid'], function (CharCodeMap, ItemGri
         }
 
         updateNivel(nivel) {
-            $("#indicadorNivel").text("Nivel " + nivel);
+            $("#indicadorNivel").text("Level " + nivel);
         }
 
         setMouseCrosshair(visible) {

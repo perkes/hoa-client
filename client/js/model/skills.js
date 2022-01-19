@@ -70,26 +70,26 @@ define(['enums'], function (Enums) {
         }
 
         _initNombresSkills(nombres) { // TODO: sacar esto de aca
-            nombres[Enums.Skill.magia] = "Magia";
-            nombres[Enums.Skill.robar] = "Robar";
-            nombres[Enums.Skill.tacticas] = "Evasión en combate";
-            nombres[Enums.Skill.armas] = "Combate cuerpo a cuerpo";
-            nombres[Enums.Skill.meditar] = "Meditar";
-            nombres[Enums.Skill.apunalar] = "Apuñalar";
-            nombres[Enums.Skill.ocultarse] = "Ocultarse";
-            nombres[Enums.Skill.supervivencia] = "Supervivencia";
-            nombres[Enums.Skill.talar] = "Talar árboles";
-            nombres[Enums.Skill.comerciar] = "Comercio";
-            nombres[Enums.Skill.defensa] = "Defensa con escudos";
-            nombres[Enums.Skill.pesca] = "Pesca";
-            nombres[Enums.Skill.mineria] = "Minería";
-            nombres[Enums.Skill.carpinteria] = "Carpintería";
-            nombres[Enums.Skill.herreria] = "Herrería";
-            nombres[Enums.Skill.liderazgo] = "Liderazgo";
-            nombres[Enums.Skill.domar] = "Domar animales";
-            nombres[Enums.Skill.proyectiles] = "Combate a distancia";
-            nombres[Enums.Skill.wrestling] = "Combate sin armas";
-            nombres[Enums.Skill.navegacion] = "Navegación";
+            nombres[Enums.Skill.magia] = "Magic";
+            nombres[Enums.Skill.robar] = "Stealing";
+            nombres[Enums.Skill.tacticas] = "Evasion";
+            nombres[Enums.Skill.armas] = "Hand-to-hand combat";
+            nombres[Enums.Skill.meditar] = "Meditate";
+            nombres[Enums.Skill.apunalar] = "Stabbing";
+            nombres[Enums.Skill.ocultarse] = "Hiding";
+            nombres[Enums.Skill.supervivencia] = "Survival";
+            nombres[Enums.Skill.talar] = "Woodchopping";
+            nombres[Enums.Skill.comerciar] = "Comerce";
+            nombres[Enums.Skill.defensa] = "Use of shields";
+            nombres[Enums.Skill.pesca] = "Fishing";
+            nombres[Enums.Skill.mineria] = "Mining";
+            nombres[Enums.Skill.carpinteria] = "Carpentry";
+            nombres[Enums.Skill.herreria] = "Blacksmithery";
+            nombres[Enums.Skill.liderazgo] = "Leadership";
+            nombres[Enums.Skill.domar] = "Animal taming";
+            nombres[Enums.Skill.proyectiles] = "Ranged combat";
+            nombres[Enums.Skill.wrestling] = "Wrestling";
+            nombres[Enums.Skill.navegacion] = "Seafaring";
             nombres[Enums.Skill.fundirmetal] = "????";
         }
     }

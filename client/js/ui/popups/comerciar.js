@@ -111,17 +111,17 @@ define(["text!../../../menus/comerciar.html!strip", 'ui/popups/popup', 'ui/game/
             var maxLabel = "";
 
             if (item.minDef) {
-                minLabel = "MIN DEFENSA";
+                minLabel = "MIN DEFENSE";
             }
             if (item.minHit) {
-                minLabel = "MIN GOLPE";
+                minLabel = "MIN HIT";
             }
 
             if (item.maxDef) {
-                maxLabel = "MAX DEFENSA";
+                maxLabel = "MAX DEFENSE";
             }
             if (item.maxHit) {
-                maxLabel = "MAX GOLPE";
+                maxLabel = "MAX HIT";
             }
 
             var minVal = item.minDef || item.minHit;
@@ -138,8 +138,8 @@ define(["text!../../../menus/comerciar.html!strip", 'ui/popups/popup', 'ui/game/
                 maxVal = "";
             }
 
-            $('#comerciarPrecio').text("PRECIO");
-            $('#comerciarNombre').text("NOMBRE");
+            $('#comerciarPrecio').text("PRICE");
+            $('#comerciarNombre').text("NAME");
             $('#comerciarPrecioValor').text(precioVal);
             $('#comerciarNombreValor').text(nombreVal);
             $('#comerciarMin').text(minLabel);

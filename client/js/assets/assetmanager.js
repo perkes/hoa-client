@@ -21,7 +21,7 @@ define(['json!../../indices/armas.json',
                 this._baseTextures = [];
 
                 this.grhs = [];
-                this.dataMapas = [];
+                this.dataMapas = [];                
                 this.preloader = new Preloader(this);
                 
                 PIXI.SCALE_MODES.DEFAULT = PIXI.SCALE_MODES.NEAREST;

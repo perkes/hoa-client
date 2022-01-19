@@ -38,7 +38,7 @@ define(["text!../../../menus/carpinteria.html!strip", 'ui/popups/popup'], functi
         setItems(items) {
             //TODO objUpgrade
             if (items.length < 1) {
-                this.$carpinteriaTexto.text("No puedes construir ningun objeto porque no tienes suficientes puntos en carpinteria");
+                this.$carpinteriaTexto.text("You can't build anything because you don't have enough skill points in carpentry.");
                 // TODO: decir que no peude construir items pq le falta skills
             } else{
                 this.$carpinteriaTexto.text("");
@@ -62,13 +62,13 @@ define(["text!../../../menus/carpinteria.html!strip", 'ui/popups/popup'], functi
                 var $cellNombre = $('<td></td>');
                 var $cellRequerimientos = $('<td></td>');
                 $cellNombre.text(item.Name);
-                $cellRequerimientos.text('Require madera: ' + item.Madera + " y madera elfica " + item.MaderaElfica);
+                $cellRequerimientos.text('Requires wood: ' + item.Madera + " and elven wood " + item.MaderaElfica);
                 // TODO: graficos madera y madera elfica
                 $row.append($cellNombre);
                 $row.append($cellRequerimientos);
 
                 var $cellConstruir = $('<td></td>');
-                var $botonConstruir = $('<button class="btn btn-default" >Construir</button>');
+                var $botonConstruir = $('<button class="btn btn-default" >Build</button>');
 
                 $botonConstruir.data("itemIndex", item.ObjCarpinteroIndex);
                 $botonConstruir.click(function () {

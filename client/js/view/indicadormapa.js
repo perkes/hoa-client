@@ -12,7 +12,7 @@ define(['font', 'lib/pixi', 'utils/palette', 'view/textstyle'], function (Font, 
         }
 
         actualizar(numMap, x, y) {
-            this.text = "Mapa " + numMap + " X: " + x + " Y: " + y;
+            this.text = "Map " + numMap + " X: " + x + " Y: " + y;
         }
 
         setEscala(escala){
