@@ -622,7 +622,7 @@ define(['../utils/util', 'enums', 'font', 'network/protocol', 'network/bytequeue
                     this.game.escribirMsgConsola(Enums.MensajeConsola.TRABAJO_DOMAR, Font.SKILLINFO);
                     break;
                 default:
-                    log.error("Numero de skill invalido: " + skill);
+                    log.error("Invalid skill number: " + skill);
             }
             this.game.setTrabajoPendiente(skill);
         }
@@ -639,12 +639,12 @@ define(['../utils/util', 'enums', 'font', 'network/protocol', 'network/bytequeue
             let seconds = tiempoEnSegundos - minutes * 60;
             let msg;
             if (minutes) {
-                msg = minutes + " minutos y " + seconds + " segundos.";
+                msg = minutes + " minutes and " + seconds + " seconds.";
             } else {
-                msg = seconds + " segundos.";
+                msg = seconds + " seconds.";
             }
 
-            this.game.escribirMsgConsola("Te encuentras a " + distancia + " mapas de la " + hogar + ", este viaje durará " + msg, Font.INFO);
+            this.game.escribirMsgConsola("You're " + distancia + " maps away from " + hogar + ", this trip will last " + msg, Font.INFO);
             this.game.playerMovement.disable();
         }
 
@@ -1303,6 +1303,7 @@ define(['../utils/util', 'enums', 'font', 'network/protocol', 'network/bytequeue
 
         sendGuildFundate() {
             var p = this.protocolo.BuildGuildFundate();
+            console.log(this.byteQueue);
             p.serialize(this.byteQueue);
         }
 

@@ -2635,9 +2635,8 @@ function GuildFundate (buffer) {
         buffer.flush();
     };
 
-    this.dispatch = function (d){
+    this.dispatch = function (d) {
         d.handleGuildFundate(this);
-
     };
 
 }

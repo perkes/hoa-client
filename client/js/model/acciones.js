@@ -255,7 +255,7 @@ define(['enums', 'font', 'model/macros'], function (Enums, Font, Macros) {
                 return;
             }
             if (this.game.atributos.mana === this.game.atributos.maxMana) {
-                this.game.escribirMsgConsola("Tu mana ya esta llena", Font.NOTIFICATION);
+                this.game.escribirMsgConsola("Your mana is already full.", Font.NOTIFICATION);
             } else {
                 this.game.client.sendMeditate();
             }

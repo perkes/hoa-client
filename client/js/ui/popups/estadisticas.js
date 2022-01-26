@@ -70,9 +70,8 @@ define(["text!../../../menus/estadisticas.html!strip", 'ui/popups/popup', 'enums
             var self = this;
             this.skills.forEachSkill(function (numSkill, puntos, porcentaje, nombre) {
                 self.$contenedorSkills.append('<tr>'
-                    + '<td class="secondaryColor">'+nombre+'</td>'
+                    + '<td class="secondaryColor" style="padding-right:10px;">'+nombre+'</td>'
                     + '<td class="everywhereBoldFont">'+puntos+'</td>'
-                    + '<td class="everywhereBoldFont">'+porcentaje+"%"+'</td>'
                     + '</tr>');
             });
         }

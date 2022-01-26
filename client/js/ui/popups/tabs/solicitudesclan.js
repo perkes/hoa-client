@@ -26,7 +26,7 @@ define([], function () {
             if (pj) {
                 cbFunc(pj);
             } else {
-                this.showMensajeCb("Debes seleccionar un personaje");
+                this.showMensajeCb("You must pick a player character.");
             }
         }
 
@@ -39,6 +39,14 @@ define([], function () {
         }
 
         initCallbacks() {
+            
+            this.$botonVerPeticion.click(() => {
+                this._ejecutarConSolicitante(
+                    function (pj) {
+                        this.game.client.sendGuildMemberInfo(pj);
+                    }.bind(this));
+            });
+            
             this.$botonDetalles.click(() => {
                 this._ejecutarConSolicitante(
                     function (pj) {

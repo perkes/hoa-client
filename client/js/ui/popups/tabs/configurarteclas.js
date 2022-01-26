@@ -77,12 +77,12 @@ define(['utils/charcodemap', 'ui/popups/popup'], function (CharCodeMap, PopUp) {
                 var id = ($(this).attr('id'));
                 var accion = id.split('_')[1];
                 if (!accion || !(self.nuevasKeys[accion])) {
-                    log.error("Error con input element!");
+                    log.error("Input element error!");
                     return;
                 }
                 var nuevaKey = event.which;
                 if (self.keyRepetida(nuevaKey)) {
-                    self.showMensajeCb("Esa tecla ya pertenece a otro comando");
+                    self.showMensajeCb("This key is already linked to a different command.");
                     self.displayKeys();
                     return false;
                 }

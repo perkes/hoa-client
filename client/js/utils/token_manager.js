@@ -25,19 +25,19 @@ define(['utils/wallet', 'json!../../config.json'], function (Wallet, config) {
         }
 
         getCharacters(callback) {
-            if (this.wallet.tokenAddresses) {
-                callback(this.wallet.tokenAddresses, this.wallet.tokenImages);
+            var token_addresses = this.wallet.tokenAddresses;
+            if (Object.getOwnPropertyNames(token_addresses).length > 0) {
+                callback(token_addresses, this.wallet.tokenImages);
             } else {
                 this.wallet.getCharacters(callback);
             }
         }
 
         getToken(nft_address, callback) {
-            if (this.token[nft_address]) {
-                callback(this.token[nft_address]);
-            } else {
-                this._requestToken(this.wallet.address, nft_address, callback);
-            }
+            var self = this;
+            this.wallet.getAddress(function (wallet_address) {
+                self._requestToken(wallet_address, nft_address, callback);
+            });
         }
     }
 

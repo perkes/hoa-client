@@ -1,21 +1,16 @@
-define([], function () {
+define(['storage/storage'], function (Storage) {
     class Wallet {
 
         constructor() {
-            this.token_addresses = null;
-            this.token_images = null;
+            this.storage = new Storage();
         }
 
         get tokenAddresses() {
-            return this.token_addresses;
+            return this.storage.getItem('token_addresses', null);
         }
 
         get tokenImages() {
-            return this.token_images;
-        }
-
-        get address() {
-            return window.solana.publicKey.toString();
+            return this.storage.getItem('token_images', null);
         }
 
         async signToken(message) {
@@ -28,6 +23,12 @@ define([], function () {
                 },
             });
             return signedMessage;
+        }
+
+        getAddress(callback) {
+            window.solana.connect({onlyIfTrusted: false}).then(() => {
+                callback(window.solana.publicKey.toString());
+            });
         }
 
         getCharacters(callback) {
@@ -44,6 +45,10 @@ define([], function () {
                     success: function(result) {
                         var arrayLength = result.length;
                         for (var i = 0; i < arrayLength; i++) {
+                            if (result[i]['tokenAmount']['amount'] == 0) {
+                                continue;
+                            }
+
                             var tokenAddress = result[i]['tokenAddress'];
                             var url = 'https://api.solscan.io/account?address=' + tokenAddress;
                             $.get(url, function(resp, status) {
@@ -68,9 +73,9 @@ define([], function () {
                         Promise.all(promises).then(data => {
                             setTimeout(function()
                             {
+                                self.storage.setItem('token_addresses', token_addresses);
+                                self.storage.setItem('token_images', token_images);
                                 callback(token_addresses, token_images);
-                                self.token_addresses = token_addresses;
-                                self.token_images = token_images;
                             }, 5000);
                         });
                     }

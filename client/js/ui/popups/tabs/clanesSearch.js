@@ -44,7 +44,7 @@ define(['../../utils/searchinputfilter'], function (SearchInputFilter) {
             this.$botonDetallesClan.click(function () {
                 var clanSeleccionado = self._getClanSeleccionado();
                 if (!clanSeleccionado) {
-                    self.showMensajeCb("Debes seleccionar un clan");
+                    self.showMensajeCb("You must select a clan");
                 } else {
                     self.detallesClan.show(clanSeleccionado);
                 }
@@ -52,7 +52,7 @@ define(['../../utils/searchinputfilter'], function (SearchInputFilter) {
             this.$botonIngresarClan.click(function () {
                 var clanSeleccionado = self._getClanSeleccionado();
                 if (!clanSeleccionado) {
-                    self.showMensajeCb("Debes seleccionar un clan");
+                    self.showMensajeCb("You must select a clan");
                 } else {
                     self.solicitudClanCb(clanSeleccionado);
                 }
@@ -61,7 +61,7 @@ define(['../../utils/searchinputfilter'], function (SearchInputFilter) {
                 if (self.game.atributos.nivel > 24) { // todo: checkear skills ?
                     self.game.client.sendGuildFundate();
                 } else {
-                    self.showMensajeCb("Para fundar un clan tienes que ser nivel 25 y tener 90 skills en liderazgo.");
+                    self.showMensajeCb("To be the founder of a clan you must be at least level 25 and have at least 90 leadership skill points.");
                 }
             });
         }

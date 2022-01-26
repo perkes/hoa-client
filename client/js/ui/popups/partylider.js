@@ -9,9 +9,11 @@ define(["text!../../../menus/partyLider.html!strip", 'ui/popups/popup'], functio
 
             var options = {
                 width: 500,
-                height: 400,
-                minWidth: 250,
-                minHeight: 300
+                height: 480,
+                minWidth: 500,
+                minHeight: 480,
+                maxWidth: 500,
+                maxHeight: 480
             };
             super(DOMdata, options);
 
@@ -50,7 +52,7 @@ define(["text!../../../menus/partyLider.html!strip", 'ui/popups/popup'], functio
             if (pj) {
                 cbFunc(pj);
             } else {
-                this.showMensajeCb("Debes seleccionar un miembro de la party");
+                this.showMensajeCb("You must first select a party member.");
             }
         }
 

@@ -61,7 +61,7 @@ define(["text!../../../menus/crearClan.html!strip", 'ui/popups/popup', 'utils/ut
 
             this.$botonCrear.click(function () {
                 if (!self._verificarCampos()){
-                    self.showMensajeCb("Debes completar todos los campos");
+                    self.showMensajeCb("You must complete all fields.");
                     return;
                 }
                 self.game.client.sendCreateNewGuild(self.$inputDescripcion.val(), self.$inputNombre.val(),

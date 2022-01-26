@@ -45,7 +45,7 @@ define(['../../utils/searchinputfilter'], function (SearchInputFilter) {
                 if (pj) {
                     self.game.client.sendGuildMemberInfo(pj);
                 } else{
-                    self.showMensajeCb("Debes seleccionar un personaje");
+                    self.showMensajeCb("You must pick a player character.");
                 }
             });
             this.$botonHechar.click( function(){
@@ -54,7 +54,7 @@ define(['../../utils/searchinputfilter'], function (SearchInputFilter) {
                     self.game.client.sendGuildKickMember(pj);
                     self.game.client.sendRequestGuildLeaderInfo();
                 } else{
-                    self.showMensajeCb("Debes seleccionar un personaje");
+                    self.showMensajeCb("You must pick a player character.");
                 }
             });
         }

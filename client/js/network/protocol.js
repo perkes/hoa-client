@@ -1641,7 +1641,6 @@ function GuildRequestMembership (buffer) {
         buffer.WriteByte(ClientPacketID.GuildRequestMembership); /* PacketID: 68 */
         buffer.WriteUnicodeString(this.Guild);
         buffer.WriteUnicodeString(this.Application);
-
         buffer.flush();
     };
 
@@ -2588,11 +2587,12 @@ function Denounce (buffer) {
 
 function GuildFundate (buffer) {
     
-        this.id = ClientPacketID.GuildFundate /* 114 */;
-        if (buffer) {
-        buffer.ReadByte(); /* PacketID */
+    this.id = ClientPacketID.GuildFundate /* 114 */;
 
-        }
+    if (buffer) {
+        buffer.ReadByte(); /* PacketID */
+    }
+
     this.serialize = function(buffer) {
         buffer.WriteByte(ClientPacketID.GuildFundate); /* PacketID: 114 */
 
@@ -2601,7 +2601,6 @@ function GuildFundate (buffer) {
 
     this.dispatch = function (d) {
         d.handleGuildFundate(this);
-
     };
 
 }
@@ -7908,10 +7907,10 @@ function ServerPacketDecodeAndDispatch(buffer, handler) {
 
     BuildCreateNewGuild(Desc,  GuildName,  Site,  Codex) {
         var e = new CreateNewGuild();
-    e.Desc= Desc;
-    e.GuildName= GuildName;
-    e.Site= Site;
-    e.Codex= Codex;
+        e.Desc = Desc;
+        e.GuildName = GuildName;
+        e.Site= Site;
+        e.Codex = Codex;
         return e;
     }
 
