@@ -79,7 +79,7 @@ define(['enums'], function (Enums) {
             nombres[Enums.Skill.ocultarse] = "Hiding";
             nombres[Enums.Skill.supervivencia] = "Survival";
             nombres[Enums.Skill.talar] = "Woodchopping";
-            nombres[Enums.Skill.comerciar] = "Comerce";
+            nombres[Enums.Skill.comerciar] = "Trade";
             nombres[Enums.Skill.defensa] = "Use of shields";
             nombres[Enums.Skill.pesca] = "Fishing";
             nombres[Enums.Skill.mineria] = "Mining";
@@ -88,7 +88,7 @@ define(['enums'], function (Enums) {
             nombres[Enums.Skill.liderazgo] = "Leadership";
             nombres[Enums.Skill.domar] = "Animal taming";
             nombres[Enums.Skill.proyectiles] = "Ranged combat";
-            nombres[Enums.Skill.wrestling] = "Wrestling";
+            nombres[Enums.Skill.wrestling] = "Brawl";
             nombres[Enums.Skill.navegacion] = "Seafaring";
             nombres[Enums.Skill.fundirmetal] = "????";
         }

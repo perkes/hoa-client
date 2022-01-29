@@ -130,6 +130,10 @@ define(['enums', 'ui/loginui', 'ui/elegirpjui', 'ui/game/gameui', 'ui/popups/men
             $("button").click(function (event) {
                 self.playSonidoClick($(this));
             });
+
+            $("input[type=image]").click(function (event) {
+                self.playSonidoClick($(this));
+            });
         }
 
         setFooterHiden(gameRatio, windowWidth, windowHeight) {

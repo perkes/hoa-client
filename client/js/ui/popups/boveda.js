@@ -126,17 +126,17 @@ define(["text!../../../menus/boveda.html!strip", 'ui/popups/popup', 'ui/game/ite
             var maxLabel = "";
 
             if (item.minDef) {
-                minLabel = "MIN DEFENSA";
+                minLabel = "MIN DEFENSE";
             }
             if (item.minHit) {
-                minLabel = "MIN GOLPE";
+                minLabel = "MIN HIT";
             }
 
             if (item.maxDef) {
-                maxLabel = "MAX DEFENSA";
+                maxLabel = "MAX DEFENSE";
             }
             if (item.maxHit) {
-                maxLabel = "MAX GOLPE";
+                maxLabel = "MAX HIT";
             }
 
             var minVal = item.minDef || item.minHit;

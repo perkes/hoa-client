@@ -52,7 +52,7 @@ define(["text!../../../menus/estadisticas.html!strip", 'ui/popups/popup', 'enums
             if (Promedio < 0) {
                 $("#estadisticas_status").text("Criminal");
             } else {
-                $("#estadisticas_status").text("Ciudadano");
+                $("#estadisticas_status").text("Citizen");
             }
         }
 

@@ -63,7 +63,15 @@ define(['enums', 'font'],
                     default:
                         throw new Error("Mensaje de parte de cuerpo invalido");
                 }
-                let txt = Enums.MensajeConsola.MENSAJE_1 + bodyPartMessage + danio + Enums.MensajeConsola.MENSAJE_2;
+
+                var txt = Enums.MensajeConsola.MENSAJE_1 + bodyPartMessage + danio;
+
+                if (danio > 1) {
+                    txt = txt + Enums.MensajeConsola.MENSAJE_GOLPE_CRIATURA_2 + Enums.MensajeConsola.MENSAJE_2;
+                } else {
+                    txt = txt + Enums.MensajeConsola.MENSAJE_GOLPE_CRIATURA_3 + Enums.MensajeConsola.MENSAJE_2;
+                }
+
                 this.renderer.agregarCharacterHoveringInfo(player, -danio, Font.CANVAS_DANIO_RECIBIDO);
                 this.renderer.agregarTextoConsola(txt, Font.FIGHT);
             }
@@ -72,7 +80,16 @@ define(['enums', 'font'],
                 if (bicho) {
                     this.renderer.agregarCharacterHoveringInfo(bicho, danio, Font.CANVAS_DANIO_REALIZADO);
                 }
-                this.renderer.agregarTextoConsola(Enums.MensajeConsola.MENSAJE_GOLPE_CRIATURA_1 + danio + Enums.MensajeConsola.MENSAJE_2, Font.FIGHT);
+
+                var txt = Enums.MensajeConsola.MENSAJE_GOLPE_CRIATURA_1 + danio;
+
+                if (danio > 1) {
+                    txt = txt + Enums.MensajeConsola.MENSAJE_GOLPE_CRIATURA_2 + Enums.MensajeConsola.MENSAJE_2;
+                } else {
+                    txt = txt + Enums.MensajeConsola.MENSAJE_GOLPE_CRIATURA_3 + Enums.MensajeConsola.MENSAJE_2;
+                }
+
+                this.renderer.agregarTextoConsola(txt, Font.FIGHT);
             }
 
             playerHitUser(hittedUser, parteCuerpo, danio) {
