@@ -57,6 +57,9 @@ define(["text!../../../menus/skills.html!strip", 'ui/popups/popup'], function (D
         }
 
         _createSkill(numSkill, nombre, puntos, porcentaje) {
+            if (nombre == undefined) {
+                return;
+            }
             var self = this;
             //var id = this._getSkillDOMid(numSkill);
             var textoId = this._getSkillTextDOMid(numSkill);
@@ -110,7 +113,9 @@ define(["text!../../../menus/skills.html!strip", 'ui/popups/popup'], function (D
         _updateSkillsPoints() {
             var self = this;
             this.skills.forEachSkill(function (numSkill, puntos, porcentaje, nombre) {
-                self._updateSkill(numSkill, nombre.puntos);
+                if (nombre != undefined) {
+                    self._updateSkill(numSkill, nombre.puntos);
+                }
             });
         }
 

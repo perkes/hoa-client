@@ -58,10 +58,10 @@ define(['../../utils/searchinputfilter'], function (SearchInputFilter) {
                 }
             });
             this.$botonCrearClan.click(function () {
-                if (self.game.atributos.nivel > 24) { // todo: checkear skills ?
+                if (self.game.atributos.nivel > 29) { // todo: checkear skills ?
                     self.game.client.sendGuildFundate();
                 } else {
-                    self.showMensajeCb("To be the founder of a clan you must be at least level 25 and have at least 90 leadership skill points.");
+                    self.showMensajeCb("To be the founder of a clan you must be at least level 30.");
                 }
             });
         }

@@ -6721,7 +6721,7 @@ function ServerPacketDecodeAndDispatch(buffer, handler) {
             var X = buffer.ReadByte();
             var Y = buffer.ReadByte();
             var GrhIndex = buffer.ReadInteger();
-
+            console.log("Received from server grh: ", GrhIndex);
             handler.handleObjectCreate( X,Y,GrhIndex );
 
             break;

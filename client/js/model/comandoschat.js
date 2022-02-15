@@ -364,10 +364,10 @@ define(['enums', 'font'], function (Enums, Font) {
                             break;
                         case "/FUNDARCLAN":
                         case "/FOUNDCLAN":
-                            if (this.game.atributos.nivel > 24) {
+                            if (this.game.atributos.nivel > 29) {
                                 this.game.client.sendGuildFundate();
                             } else {
-                                this.game.escribirMsgConsola("To found a new clan you must be at least level 25 and have at least 90 leadership skill points.");
+                                this.game.escribirMsgConsola("To found a new clan you must be at least level 30.");
                             }
 
                             break;

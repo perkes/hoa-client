@@ -61,7 +61,7 @@ define(["text!../../../menus/boveda.html!strip", 'ui/popups/popup', 'ui/game/ite
         }
 
         setOroDisponible(oro) {
-            $("#bovedaOroDisponibleLabel").text("ORO DISPONIBLE");
+            $("#bovedaOroDisponibleLabel").text("AVAILABLE GOLD");
             $("#bovedaOroDisponibleVal").text(oro);
         }
 

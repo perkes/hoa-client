@@ -58,7 +58,7 @@ define(['enums', 'utils/util', 'font', 'lib/pixi', 'view/charactersprites', 'vie
 
             agregarItem(item, numGrh) {
                 if (!this.assetManager.getGrh(numGrh)) {
-                    log.error("grh de item invalido!");
+                    log.error("grh de item invalido: " + numGrh.toString());
                     return;
                 }
                 item.sprite = this._crearSprite(this.entityContainer, numGrh, Math.round(item.x), Math.round(item.y), -50);
@@ -223,11 +223,13 @@ define(['enums', 'utils/util', 'font', 'lib/pixi', 'view/charactersprites', 'vie
             }
 
             _setSpriteClipping(sprite) {
-                sprite.visible = this._spriteVisiblePorCamara(sprite, this.CLIPPING_EXTRA_POSITIONS);
+                if (sprite) {
+                    sprite.visible = this._spriteVisiblePorCamara(sprite, this.CLIPPING_EXTRA_POSITIONS);
+                }
             }
 
             entityVisiblePorCamara(entity, extraPositions) {
-                if (!entity.sprite){
+                if (!entity.sprite) {
                     return false;
                 }
                 let finalExtraPositions;

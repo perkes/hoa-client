@@ -216792,5 +216792,41 @@
     "width": 65,
     "id": 23672,
     "offY": 3159
+  },
+  {
+    "offX": 3259,
+    "height": 40,
+    "grafico": "a1",
+    "css": 684,
+    "width": 25,
+    "id": 23673,
+    "offY": 2588
+  },
+  {
+    "offX": 3227,
+    "height": 34,
+    "grafico": "a1",
+    "css": 685,
+    "width": 19,
+    "id": 23674,
+    "offY": 2590
+  },
+  {
+    "offX": 2477,
+    "height": 32,
+    "grafico": "a1",
+    "css": 686,
+    "width": 25,
+    "id": 23675,
+    "offY": 2495
+  },
+  {
+    "offX": 3192,
+    "height": 29,
+    "grafico": "a1",
+    "css": 687,
+    "width": 21,
+    "id": 23676,
+    "offY": 2590
   }
 ]

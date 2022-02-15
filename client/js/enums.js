@@ -112,7 +112,6 @@ define({
         mineria: 13,
         carpinteria: 14,
         herreria: 15,
-        liderazgo: 16,
         domar: 17,
         proyectiles: 18,
         wrestling: 19,

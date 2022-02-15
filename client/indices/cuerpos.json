@@ -13,7 +13,7 @@
         "right": 4588, 
         "up": 4586, 
         "down": 4585, 
-        "offHeadY": -4, 
+        "offHeadY": 0, 
         "offHeadX": 0, 
         "id": 2, 
         "left": 4587
@@ -4932,7 +4932,15 @@
         "id": 548, 
         "left": 23175
     }, 
-    0, 
+    {
+        "right": 12940, 
+        "up": 12938, 
+        "down": 12937, 
+        "offHeadY": -4, 
+        "offHeadX": 0, 
+        "id": 549, 
+        "left": 12939
+    },
     {
         "right": 23654, 
         "up": 23656, 
