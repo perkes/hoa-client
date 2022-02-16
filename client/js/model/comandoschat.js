@@ -403,6 +403,24 @@ define(['enums', 'font'], function (Enums, Font) {
                             this.game.client.sendHome();
                             break;
 
+                        case "/TELEP":
+                            if (args.length == 4) {
+                                this.game.client.sendWarpChar(args[0], args[1], args[2], args[3]);
+                            } else {
+                                this.game.escribirMsgConsola("Missing/Wrong parameters. Write /TELEP USERNAME MAP X Y.");
+                            }
+                            break;
+                        case "/TELEPLOC":
+                            this.game.client.sendWarpMeToTarget();
+                            break;
+                        case "/GOTO":
+                        case "/IRA":
+                            if (args.length == 1) {
+                                this.game.client.sendGoToChar(args[0]);
+                            } else {
+                                this.game.escribirMsgConsola("Missing/Wrong parameters. Write /GOTO USERNAME.");
+                            }
+                            break;
                         default:
                             valido = false;
                             break;

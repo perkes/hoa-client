@@ -1433,6 +1433,7 @@ define(['../utils/util', 'enums', 'font', 'network/protocol', 'network/bytequeue
         }
 
         sendWarpChar(UserName, Map, X, Y) {
+            console.log('Warping', UserName, 'to map', Map, 'X:', X, 'Y:', Y);
             var p = this.protocolo.BuildWarpChar(UserName, Map, X, Y);
             p.serialize(this.byteQueue);
         }

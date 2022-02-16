@@ -3080,7 +3080,7 @@ function GMMessage (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.GMMessage); /* PacketID: 1 */
         buffer.WriteUnicodeString(this.Chat);
 
@@ -3101,7 +3101,7 @@ function ShowName (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ShowName); /* PacketID: 2 */
 
         buffer.flush();
@@ -3121,7 +3121,7 @@ function OnlineRoyalArmy (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.OnlineRoyalArmy); /* PacketID: 3 */
 
         buffer.flush();
@@ -3141,7 +3141,7 @@ function OnlineChaosLegion (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.OnlineChaosLegion); /* PacketID: 4 */
 
         buffer.flush();
@@ -3162,7 +3162,7 @@ function GoNearby (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.GoNearby); /* PacketID: 5 */
         buffer.WriteUnicodeString(this.UserName);
 
@@ -3184,7 +3184,7 @@ function Comment (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.Comment); /* PacketID: 6 */
         buffer.WriteUnicodeString(this.Data);
 
@@ -3205,7 +3205,7 @@ function ServerTime (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ServerTime); /* PacketID: 7 */
 
         buffer.flush();
@@ -3226,7 +3226,7 @@ function Where (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.Where); /* PacketID: 8 */
         buffer.WriteUnicodeString(this.UserName);
 
@@ -3248,7 +3248,7 @@ function CreaturesInMap (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.CreaturesInMap); /* PacketID: 9 */
         buffer.WriteInteger(this.Map);
 
@@ -3269,7 +3269,7 @@ function WarpMeToTarget (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.WarpMeToTarget); /* PacketID: 10 */
 
         buffer.flush();
@@ -3293,7 +3293,7 @@ function WarpChar (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.WarpChar); /* PacketID: 11 */
         buffer.WriteUnicodeString(this.UserName);
         buffer.WriteInteger(this.Map);
@@ -3318,7 +3318,7 @@ function Silence (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.Silence); /* PacketID: 12 */
         buffer.WriteUnicodeString(this.UserName);
 
@@ -3339,7 +3339,7 @@ function SOSShowList (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.SOSShowList); /* PacketID: 13 */
 
         buffer.flush();
@@ -3360,7 +3360,7 @@ function SOSRemove (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.SOSRemove); /* PacketID: 14 */
         buffer.WriteUnicodeString(this.UserName);
 
@@ -3382,7 +3382,7 @@ function GoToChar (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.GoToChar); /* PacketID: 15 */
         buffer.WriteUnicodeString(this.UserName);
 
@@ -3403,7 +3403,7 @@ function Invisible (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.Invisible); /* PacketID: 16 */
 
         buffer.flush();
@@ -3423,7 +3423,7 @@ function GMPanel (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.GMPanel); /* PacketID: 17 */
 
         buffer.flush();
@@ -3443,7 +3443,7 @@ function RequestUserList (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.RequestUserList); /* PacketID: 18 */
 
         buffer.flush();
@@ -3463,7 +3463,7 @@ function Working (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.Working); /* PacketID: 19 */
 
         buffer.flush();
@@ -3483,7 +3483,7 @@ function Hiding (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.Hiding); /* PacketID: 20 */
 
         buffer.flush();
@@ -3506,7 +3506,7 @@ function Jail (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.Jail); /* PacketID: 21 */
         buffer.WriteUnicodeString(this.UserName);
         buffer.WriteUnicodeString(this.Reason);
@@ -3529,7 +3529,7 @@ function KillNPC (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.KillNPC); /* PacketID: 22 */
 
         buffer.flush();
@@ -3551,7 +3551,7 @@ function WarnUser (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.WarnUser); /* PacketID: 23 */
         buffer.WriteUnicodeString(this.UserName);
         buffer.WriteUnicodeString(this.Reason);
@@ -3577,7 +3577,7 @@ function EditChar (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.EditChar); /* PacketID: 24 */
         buffer.WriteUnicodeString(this.UserName);
         buffer.WriteByte(this.Opcion);
@@ -3602,7 +3602,7 @@ function RequestCharInfo (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.RequestCharInfo); /* PacketID: 25 */
         buffer.WriteUnicodeString(this.TargetName);
 
@@ -3624,7 +3624,7 @@ function RequestCharStats (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.RequestCharStats); /* PacketID: 26 */
         buffer.WriteUnicodeString(this.UserName);
 
@@ -3646,7 +3646,7 @@ function RequestCharGold (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.RequestCharGold); /* PacketID: 27 */
         buffer.WriteUnicodeString(this.UserName);
 
@@ -3668,7 +3668,7 @@ function RequestCharInventory (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.RequestCharInventory); /* PacketID: 28 */
         buffer.WriteUnicodeString(this.UserName);
 
@@ -3690,7 +3690,7 @@ function RequestCharBank (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.RequestCharBank); /* PacketID: 29 */
         buffer.WriteUnicodeString(this.UserName);
 
@@ -3712,7 +3712,7 @@ function RequestCharSkills (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.RequestCharSkills); /* PacketID: 30 */
         buffer.WriteUnicodeString(this.UserName);
 
@@ -3734,7 +3734,7 @@ function ReviveChar (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ReviveChar); /* PacketID: 31 */
         buffer.WriteUnicodeString(this.UserName);
 
@@ -3755,7 +3755,7 @@ function OnlineGM (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.OnlineGM); /* PacketID: 32 */
 
         buffer.flush();
@@ -3776,7 +3776,7 @@ function OnlineMap (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.OnlineMap); /* PacketID: 33 */
         buffer.WriteInteger(this.Map);
 
@@ -3798,7 +3798,7 @@ function Forgive (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.Forgive); /* PacketID: 34 */
         buffer.WriteUnicodeString(this.UserName);
 
@@ -3820,7 +3820,7 @@ function Kick (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.Kick); /* PacketID: 35 */
         buffer.WriteUnicodeString(this.UserName);
 
@@ -3842,7 +3842,7 @@ function Execute (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.Execute); /* PacketID: 36 */
         buffer.WriteUnicodeString(this.UserName);
 
@@ -3865,7 +3865,7 @@ function BanChar (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.BanChar); /* PacketID: 37 */
         buffer.WriteUnicodeString(this.UserName);
         buffer.WriteUnicodeString(this.Reason);
@@ -3888,7 +3888,7 @@ function UnbanChar (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.UnbanChar); /* PacketID: 38 */
         buffer.WriteUnicodeString(this.UserName);
 
@@ -3909,7 +3909,7 @@ function NPCFollow (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.NPCFollow); /* PacketID: 39 */
 
         buffer.flush();
@@ -3930,7 +3930,7 @@ function SummonChar (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.SummonChar); /* PacketID: 40 */
         buffer.WriteUnicodeString(this.UserName);
 
@@ -3951,7 +3951,7 @@ function SpawnListRequest (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.SpawnListRequest); /* PacketID: 41 */
 
         buffer.flush();
@@ -3972,7 +3972,7 @@ function SpawnCreature (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.SpawnCreature); /* PacketID: 42 */
         buffer.WriteInteger(this.NPC);
 
@@ -3993,7 +3993,7 @@ function ResetNPCInventory (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ResetNPCInventory); /* PacketID: 43 */
 
         buffer.flush();
@@ -4013,7 +4013,7 @@ function CleanWorld (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.CleanWorld); /* PacketID: 44 */
 
         buffer.flush();
@@ -4034,7 +4034,7 @@ function ServerMessage (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ServerMessage); /* PacketID: 45 */
         buffer.WriteUnicodeString(this.Message);
 
@@ -4056,7 +4056,7 @@ function NickToIP (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.NickToIP); /* PacketID: 46 */
         buffer.WriteUnicodeString(this.UserName);
 
@@ -4081,7 +4081,7 @@ function IPToNick (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.IPToNick); /* PacketID: 47 */
         buffer.WriteByte(this.A);
         buffer.WriteByte(this.B);
@@ -4106,7 +4106,7 @@ function GuildOnlineMembers (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.GuildOnlineMembers); /* PacketID: 48 */
         buffer.WriteUnicodeString(this.GuildName);
 
@@ -4131,7 +4131,7 @@ function TeleportCreate (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.TeleportCreate); /* PacketID: 49 */
         buffer.WriteInteger(this.Map);
         buffer.WriteByte(this.X);
@@ -4155,7 +4155,7 @@ function TeleportDestroy (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.TeleportDestroy); /* PacketID: 50 */
 
         buffer.flush();
@@ -4175,7 +4175,7 @@ function RainToggle (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.RainToggle); /* PacketID: 51 */
 
         buffer.flush();
@@ -4196,7 +4196,7 @@ function SetCharDescription (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.SetCharDescription); /* PacketID: 52 */
         buffer.WriteUnicodeString(this.Description);
 
@@ -4219,7 +4219,7 @@ function ForceMIDIToMap (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ForceMIDIToMap); /* PacketID: 53 */
         buffer.WriteByte(this.MidiID);
         buffer.WriteInteger(this.Map);
@@ -4245,7 +4245,7 @@ function ForceWAVEToMap (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ForceWAVEToMap); /* PacketID: 54 */
         buffer.WriteByte(this.Wave);
         buffer.WriteInteger(this.Map);
@@ -4270,7 +4270,7 @@ function RoyalArmyMessage (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.RoyalArmyMessage); /* PacketID: 55 */
         buffer.WriteUnicodeString(this.Message);
 
@@ -4292,7 +4292,7 @@ function ChaosLegionMessage (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ChaosLegionMessage); /* PacketID: 56 */
         buffer.WriteUnicodeString(this.Message);
 
@@ -4314,7 +4314,7 @@ function CitizenMessage (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.CitizenMessage); /* PacketID: 57 */
         buffer.WriteUnicodeString(this.Message);
 
@@ -4336,7 +4336,7 @@ function CriminalMessage (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.CriminalMessage); /* PacketID: 58 */
         buffer.WriteUnicodeString(this.Message);
 
@@ -4358,7 +4358,7 @@ function TalkAsNPC (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.TalkAsNPC); /* PacketID: 59 */
         buffer.WriteUnicodeString(this.Message);
 
@@ -4379,7 +4379,7 @@ function DestroyAllItemsInArea (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.DestroyAllItemsInArea); /* PacketID: 60 */
 
         buffer.flush();
@@ -4400,7 +4400,7 @@ function AcceptRoyalCouncilMember (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.AcceptRoyalCouncilMember); /* PacketID: 61 */
         buffer.WriteUnicodeString(this.UserName);
 
@@ -4422,7 +4422,7 @@ function AcceptChaosCouncilMember (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.AcceptChaosCouncilMember); /* PacketID: 62 */
         buffer.WriteUnicodeString(this.UserName);
 
@@ -4443,7 +4443,7 @@ function ItemsInTheFloor (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ItemsInTheFloor); /* PacketID: 63 */
 
         buffer.flush();
@@ -4464,7 +4464,7 @@ function MakeDumb (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.MakeDumb); /* PacketID: 64 */
         buffer.WriteUnicodeString(this.UserName);
 
@@ -4486,7 +4486,7 @@ function MakeDumbNoMore (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.MakeDumbNoMore); /* PacketID: 65 */
         buffer.WriteUnicodeString(this.UserName);
 
@@ -4507,7 +4507,7 @@ function DumpIPTables (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.DumpIPTables); /* PacketID: 66 */
 
         buffer.flush();
@@ -4528,7 +4528,7 @@ function CouncilKick (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.CouncilKick); /* PacketID: 67 */
         buffer.WriteUnicodeString(this.UserName);
 
@@ -4550,7 +4550,7 @@ function SetTrigger (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.SetTrigger); /* PacketID: 68 */
         buffer.WriteByte(this.Trigger);
 
@@ -4571,7 +4571,7 @@ function AskTrigger (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.AskTrigger); /* PacketID: 69 */
 
         buffer.flush();
@@ -4591,7 +4591,7 @@ function BannedIPList (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.BannedIPList); /* PacketID: 70 */
 
         buffer.flush();
@@ -4611,7 +4611,7 @@ function BannedIPReload (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.BannedIPReload); /* PacketID: 71 */
 
         buffer.flush();
@@ -4632,7 +4632,7 @@ function GuildMemberList (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.GuildMemberList); /* PacketID: 72 */
         buffer.WriteUnicodeString(this.GuildName);
 
@@ -4654,7 +4654,7 @@ function GuildBan (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.GuildBan); /* PacketID: 73 */
         buffer.WriteUnicodeString(this.GuildName);
 
@@ -4677,7 +4677,7 @@ function BanIP (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.BanIP); /* PacketID: 74 */
         buffer.WriteUnicodeString(this.IP);
         buffer.WriteUnicodeString(this.Reason);
@@ -4700,7 +4700,7 @@ function UnbanIP (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.UnbanIP); /* PacketID: 75 */
         buffer.WriteUnicodeString(this.IP);
 
@@ -4722,7 +4722,7 @@ function CreateItem (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.CreateItem); /* PacketID: 76 */
         buffer.WriteInteger(this.Item);
 
@@ -4743,7 +4743,7 @@ function DestroyItems (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.DestroyItems); /* PacketID: 77 */
 
         buffer.flush();
@@ -4765,7 +4765,7 @@ function ChaosLegionKick (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ChaosLegionKick); /* PacketID: 78 */
         buffer.WriteUnicodeString(this.UserName);
         buffer.WriteUnicodeString(this.Reason);
@@ -4789,7 +4789,7 @@ function RoyalArmyKick (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.RoyalArmyKick); /* PacketID: 79 */
         buffer.WriteUnicodeString(this.UserName);
         buffer.WriteUnicodeString(this.Reason);
@@ -4812,7 +4812,7 @@ function ForceMIDIAll (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ForceMIDIAll); /* PacketID: 80 */
         buffer.WriteByte(this.MidiID);
 
@@ -4834,7 +4834,7 @@ function ForceWAVEAll (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ForceWAVEAll); /* PacketID: 81 */
         buffer.WriteByte(this.WaveID);
 
@@ -4858,7 +4858,7 @@ function RemovePunishment (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.RemovePunishment); /* PacketID: 82 */
         buffer.WriteUnicodeString(this.UserName);
         buffer.WriteByte(this.Punishment);
@@ -4881,7 +4881,7 @@ function TileBlockedToggle (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.TileBlockedToggle); /* PacketID: 83 */
 
         buffer.flush();
@@ -4901,7 +4901,7 @@ function KillNPCNoRespawn (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.KillNPCNoRespawn); /* PacketID: 84 */
 
         buffer.flush();
@@ -4921,7 +4921,7 @@ function KillAllNearbyNPCs (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.KillAllNearbyNPCs); /* PacketID: 85 */
 
         buffer.flush();
@@ -4942,7 +4942,7 @@ function LastIP (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.LastIP); /* PacketID: 86 */
         buffer.WriteUnicodeString(this.UserName);
 
@@ -4963,7 +4963,7 @@ function ChangeMOTD (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ChangeMOTD); /* PacketID: 87 */
 
         buffer.flush();
@@ -4984,7 +4984,7 @@ function SetMOTD (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.SetMOTD); /* PacketID: 88 */
         buffer.WriteUnicodeString(this.Motd);
 
@@ -5006,7 +5006,7 @@ function SystemMessage (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.SystemMessage); /* PacketID: 89 */
         buffer.WriteUnicodeString(this.Message);
 
@@ -5028,7 +5028,7 @@ function CreateNPC (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.CreateNPC); /* PacketID: 90 */
         buffer.WriteInteger(this.NpcIndex);
 
@@ -5050,7 +5050,7 @@ function CreateNPCWithRespawn (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.CreateNPCWithRespawn); /* PacketID: 91 */
         buffer.WriteInteger(this.NpcIndex);
 
@@ -5073,7 +5073,7 @@ function ImperialArmour (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ImperialArmour); /* PacketID: 92 */
         buffer.WriteByte(this.Index);
         buffer.WriteInteger(this.ObjIndex);
@@ -5097,7 +5097,7 @@ function ChaosArmour (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ChaosArmour); /* PacketID: 93 */
         buffer.WriteByte(this.Index);
         buffer.WriteInteger(this.ObjIndex);
@@ -5119,7 +5119,7 @@ function NavigateToggle (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.NavigateToggle); /* PacketID: 94 */
 
         buffer.flush();
@@ -5139,7 +5139,7 @@ function ServerOpenToUsersToggle (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ServerOpenToUsersToggle); /* PacketID: 95 */
 
         buffer.flush();
@@ -5159,7 +5159,7 @@ function TurnOffServer (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.TurnOffServer); /* PacketID: 96 */
 
         buffer.flush();
@@ -5180,7 +5180,7 @@ function TurnCriminal (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.TurnCriminal); /* PacketID: 97 */
         buffer.WriteUnicodeString(this.UserName);
 
@@ -5202,7 +5202,7 @@ function ResetFactions (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ResetFactions); /* PacketID: 98 */
         buffer.WriteUnicodeString(this.UserName);
 
@@ -5224,7 +5224,7 @@ function RemoveCharFromGuild (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.RemoveCharFromGuild); /* PacketID: 99 */
         buffer.WriteUnicodeString(this.UserName);
 
@@ -5246,7 +5246,7 @@ function RequestCharMail (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.RequestCharMail); /* PacketID: 100 */
         buffer.WriteUnicodeString(this.UserName);
 
@@ -5269,7 +5269,7 @@ function AlterPassword (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.AlterPassword); /* PacketID: 101 */
         buffer.WriteUnicodeString(this.UserName);
         buffer.WriteUnicodeString(this.CopyFrom);
@@ -5293,7 +5293,7 @@ function AlterMail (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.AlterMail); /* PacketID: 102 */
         buffer.WriteUnicodeString(this.UserName);
         buffer.WriteUnicodeString(this.NewMail);
@@ -5317,7 +5317,7 @@ function AlterName (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.AlterName); /* PacketID: 103 */
         buffer.WriteUnicodeString(this.UserName);
         buffer.WriteUnicodeString(this.NewName);
@@ -5339,7 +5339,7 @@ function ToggleCentinelActivated (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ToggleCentinelActivated); /* PacketID: 104 */
 
         buffer.flush();
@@ -5359,7 +5359,7 @@ function DoBackUp (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.DoBackUp); /* PacketID: 105 */
 
         buffer.flush();
@@ -5380,7 +5380,7 @@ function ShowGuildMessages (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ShowGuildMessages); /* PacketID: 106 */
         buffer.WriteUnicodeString(this.GuildName);
 
@@ -5401,7 +5401,7 @@ function SaveMap (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.SaveMap); /* PacketID: 107 */
 
         buffer.flush();
@@ -5422,7 +5422,7 @@ function ChangeMapInfoPK (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ChangeMapInfoPK); /* PacketID: 108 */
         buffer.WriteBoolean(this.Pk);
 
@@ -5444,7 +5444,7 @@ function ChangeMapInfoBackup (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ChangeMapInfoBackup); /* PacketID: 109 */
         buffer.WriteBoolean(this.Backup);
 
@@ -5466,7 +5466,7 @@ function ChangeMapInfoRestricted (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ChangeMapInfoRestricted); /* PacketID: 110 */
         buffer.WriteUnicodeString(this.RestrictedTo);
 
@@ -5488,7 +5488,7 @@ function ChangeMapInfoNoMagic (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ChangeMapInfoNoMagic); /* PacketID: 111 */
         buffer.WriteBoolean(this.NoMagic);
 
@@ -5510,7 +5510,7 @@ function ChangeMapInfoNoInvi (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ChangeMapInfoNoInvi); /* PacketID: 112 */
         buffer.WriteBoolean(this.NoInvi);
 
@@ -5532,7 +5532,7 @@ function ChangeMapInfoNoResu (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ChangeMapInfoNoResu); /* PacketID: 113 */
         buffer.WriteBoolean(this.NoResu);
 
@@ -5554,7 +5554,7 @@ function ChangeMapInfoLand (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ChangeMapInfoLand); /* PacketID: 114 */
         buffer.WriteUnicodeString(this.Data);
 
@@ -5576,7 +5576,7 @@ function ChangeMapInfoZone (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ChangeMapInfoZone); /* PacketID: 115 */
         buffer.WriteUnicodeString(this.Data);
 
@@ -5598,7 +5598,7 @@ function ChangeMapInfoStealNpc (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ChangeMapInfoStealNpc); /* PacketID: 116 */
         buffer.WriteBoolean(this.RoboNpc);
 
@@ -5620,7 +5620,7 @@ function ChangeMapInfoNoOcultar (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ChangeMapInfoNoOcultar); /* PacketID: 117 */
         buffer.WriteBoolean(this.NoOcultar);
 
@@ -5642,7 +5642,7 @@ function ChangeMapInfoNoInvocar (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ChangeMapInfoNoInvocar); /* PacketID: 118 */
         buffer.WriteBoolean(this.NoInvocar);
 
@@ -5663,7 +5663,7 @@ function SaveChars (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.SaveChars); /* PacketID: 119 */
 
         buffer.flush();
@@ -5683,7 +5683,7 @@ function CleanSOS (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.CleanSOS); /* PacketID: 120 */
 
         buffer.flush();
@@ -5703,7 +5703,7 @@ function ShowServerForm (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ShowServerForm); /* PacketID: 121 */
 
         buffer.flush();
@@ -5723,7 +5723,7 @@ function Night (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.Night); /* PacketID: 122 */
 
         buffer.flush();
@@ -5743,7 +5743,7 @@ function KickAllChars (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.KickAllChars); /* PacketID: 123 */
 
         buffer.flush();
@@ -5763,7 +5763,7 @@ function ReloadNPCs (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ReloadNPCs); /* PacketID: 124 */
 
         buffer.flush();
@@ -5783,7 +5783,7 @@ function ReloadServerIni (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ReloadServerIni); /* PacketID: 125 */
 
         buffer.flush();
@@ -5803,7 +5803,7 @@ function ReloadSpells (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ReloadSpells); /* PacketID: 126 */
 
         buffer.flush();
@@ -5823,7 +5823,7 @@ function ReloadObjects (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ReloadObjects); /* PacketID: 127 */
 
         buffer.flush();
@@ -5843,7 +5843,7 @@ function Restart (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.Restart); /* PacketID: 128 */
 
         buffer.flush();
@@ -5863,7 +5863,7 @@ function ResetAutoUpdate (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ResetAutoUpdate); /* PacketID: 129 */
 
         buffer.flush();
@@ -5886,7 +5886,7 @@ function ChatColor (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ChatColor); /* PacketID: 130 */
         buffer.WriteByte(this.R);
         buffer.WriteByte(this.G);
@@ -5909,7 +5909,7 @@ function Ignored (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.Ignored); /* PacketID: 131 */
 
         buffer.flush();
@@ -5931,7 +5931,7 @@ function CheckSlot (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.CheckSlot); /* PacketID: 132 */
         buffer.WriteUnicodeString(this.UserName);
         buffer.WriteByte(this.Slot);
@@ -5956,7 +5956,7 @@ function SetIniVar (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.SetIniVar); /* PacketID: 133 */
         buffer.WriteUnicodeString(this.Seccion);
         buffer.WriteUnicodeString(this.Clave);
@@ -5982,7 +5982,7 @@ function CreatePretorianClan (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.CreatePretorianClan); /* PacketID: 134 */
         buffer.WriteInteger(this.Map);
         buffer.WriteByte(this.X);
@@ -6006,7 +6006,7 @@ function RemovePretorianClan (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.RemovePretorianClan); /* PacketID: 135 */
         buffer.WriteInteger(this.Map);
 
@@ -6027,7 +6027,7 @@ function EnableDenounces (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.EnableDenounces); /* PacketID: 136 */
 
         buffer.flush();
@@ -6047,7 +6047,7 @@ function ShowDenouncesList (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.ShowDenouncesList); /* PacketID: 137 */
 
         buffer.flush();
@@ -6068,7 +6068,7 @@ function MapMessage (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.MapMessage); /* PacketID: 138 */
         buffer.WriteUnicodeString(this.Message);
 
@@ -6090,7 +6090,7 @@ function SetDialog (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.SetDialog); /* PacketID: 139 */
         buffer.WriteUnicodeString(this.Message);
 
@@ -6111,7 +6111,7 @@ function Impersonate (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.Impersonate); /* PacketID: 140 */
 
         buffer.flush();
@@ -6131,7 +6131,7 @@ function Imitate (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.Imitate); /* PacketID: 141 */
 
         buffer.flush();
@@ -6153,7 +6153,7 @@ function RecordAdd (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.RecordAdd); /* PacketID: 142 */
         buffer.WriteUnicodeString(this.UserName);
         buffer.WriteUnicodeString(this.Reason);
@@ -6176,7 +6176,7 @@ function RecordRemove (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.RecordRemove); /* PacketID: 143 */
         buffer.WriteByte(this.Index);
 
@@ -6199,7 +6199,7 @@ function RecordAddObs (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.RecordAddObs); /* PacketID: 144 */
         buffer.WriteByte(this.Index);
         buffer.WriteUnicodeString(this.Obs);
@@ -6221,7 +6221,7 @@ function RecordListRequest (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.RecordListRequest); /* PacketID: 145 */
 
         buffer.flush();
@@ -6242,7 +6242,7 @@ function RecordDetailsRequest (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.RecordDetailsRequest); /* PacketID: 146 */
         buffer.WriteByte(this.Index);
 
@@ -6265,7 +6265,7 @@ function AlterGuildName (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.AlterGuildName); /* PacketID: 147 */
         buffer.WriteUnicodeString(this.OldGuildName);
         buffer.WriteUnicodeString(this.NewGuildName);
@@ -6288,7 +6288,7 @@ function HigherAdminsMessage (buffer) {
 
         }
     this.serialize = function(buffer) {
-        buffer.WriteByte(ClientPacketID_GMCommands);
+        buffer.WriteByte(ClientPacketID.GMCommands);
         buffer.WriteByte(ClientGMPacketID.HigherAdminsMessage); /* PacketID: 148 */
         buffer.WriteUnicodeString(this.Message);
 
