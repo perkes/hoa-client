@@ -406,8 +406,6 @@ define(['enums', 'font'], function (Enums, Font) {
                         case "/TELEP":
                             if (args.length == 4) {
                                 this.game.client.sendWarpChar(args[0], args[1], args[2], args[3]);
-                            } else {
-                                this.game.escribirMsgConsola("Missing/Wrong parameters. Write /TELEP USERNAME MAP X Y.");
                             }
                             break;
                         case "/TELEPLOC":
@@ -417,8 +415,102 @@ define(['enums', 'font'], function (Enums, Font) {
                         case "/IRA":
                             if (args.length == 1) {
                                 this.game.client.sendGoToChar(args[0]);
-                            } else {
-                                this.game.escribirMsgConsola("Missing/Wrong parameters. Write /GOTO USERNAME.");
+                            }
+                            break;
+                        case "/SHOW":
+                            if (args.length == 1) {
+                                switch (args[0].toUpperCase()) {
+                                    case "SOS":
+                                        this.game.client.sendSOSShowList();
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                            break;
+                        case "/BORRAR":
+                        case "/CLEAR":
+                            if (args.length == 1) {
+                                this.game.client.sendSOSRemove(args[0]);
+                            }
+                            break;
+                        case "/CARCEL":
+                        case "/JAIL":
+                            if (args.length == 3) {
+                                this.game.client.sendJail(args[0], args[1], args[2]);
+                            }
+                            break;
+                        case "/GMSG":
+                            if (args.length) {
+                                this.game.client.sendGMMessage(args.join(" "));
+                            }
+                            break;
+                        case "/ONLINEGM":
+                            this.game.client.sendOnlineGM();
+                            break;
+                        case "/SEGUIR":
+                        case "/FOLLOW":
+                            this.game.client.sendNPCFollow();
+                            break;
+                        case "/DONDE":
+                        case "/WHERE":
+                            if (args.length == 1) {
+                                this.game.client.sendWhere(args[0]);
+                            }
+                            break;
+                        case "/SUM":
+                            if (args.length == 1) {
+                                this.game.client.sendSummonChar(args[0]);
+                            }
+                            break;
+                        case "/NENE":
+                            if (args.length == 1) {
+                                this.game.client.sendCreaturesInMap(args[0]);
+                            }
+                            break;
+                        case "/HORA":
+                        case "/TIME":
+                            this.game.client.sendServerTime();
+                            break;
+                        case "/RMATA":
+                        case "/RKILL":
+                            this.game.client.sendKillNPC();
+                            break;
+                        case "/EJECUTAR":
+                        case "/EXECUTE":
+                            if (args.length == 1) {
+                                this.game.client.sendExecute(args[0]);
+                            }
+                            break;
+                        case "/REVIVIR":
+                        case "/REVIVE":
+                            if (args.length == 1) {
+                                this.game.client.sendReviveChar(args[0]);
+                            }
+                            break;
+                        case "/PERDON":
+                        case "/PARDON":
+                            if (args.length == 1) {
+                                this.game.client.sendForgive(args[0]);
+                            }
+                            break;
+                        case "/LLUVIA":
+                        case "/RAIN":
+                            this.game.client.sendRainToggle();
+                            break;
+                        case "/ONLINEMAP":
+                            if (args.length == 1) {
+                                this.game.client.sendOnlineMap(args[0]);
+                            }
+                            break;
+                        case "/BAN":
+                            if (args.length == 2) {
+                                this.game.client.sendBanChar(args[0], args[1]);
+                            }
+                            break;
+                        case "/UNBAN":
+                            if (args.length == 1) {
+                                this.game.client.sendUnbanChar(args[0]);
                             }
                             break;
                         default:
@@ -512,41 +604,6 @@ define(['enums', 'font'], function (Enums, Font) {
  Call WriteCreaturesInMap(UserMap)
  End If
 
- Case "/TELEPLOC"
- Call WriteWarpMeToTarget
-
- Case "/TELEP"
- If notNullArguments And CantidadArgumentos >= 4 Then
- If ValidNumber(ArgumentosAll(1), eNumber_Types.ent_Integer) And ValidNumber(ArgumentosAll(2), eNumber_Types.ent_Byte) And ValidNumber(ArgumentosAll(3), eNumber_Types.ent_Byte) Then
- Call WriteWarpChar(ArgumentosAll(0), ArgumentosAll(1), ArgumentosAll(2), ArgumentosAll(3))
- Else
- 'No es numerico
- Call ShowConsoleMsg("Valor incorrecto. Utilice /telep NICKNAME MAPA X Y.")
- End If
- ElseIf CantidadArgumentos = 3 Then
- If ValidNumber(ArgumentosAll(0), eNumber_Types.ent_Integer) And ValidNumber(ArgumentosAll(1), eNumber_Types.ent_Byte) And ValidNumber(ArgumentosAll(2), eNumber_Types.ent_Byte) Then
- 'Por defecto, si no se indica el nombre, se teletransporta el mismo usuario
- Call WriteWarpChar("YO", ArgumentosAll(0), ArgumentosAll(1), ArgumentosAll(2))
- ElseIf ValidNumber(ArgumentosAll(1), eNumber_Types.ent_Byte) And ValidNumber(ArgumentosAll(2), eNumber_Types.ent_Byte) Then
- 'Por defecto, si no se indica el mapa, se teletransporta al mismo donde esta el usuario
- Call WriteWarpChar(ArgumentosAll(0), UserMap, ArgumentosAll(1), ArgumentosAll(2))
- Else
- 'No uso ningun formato por defecto
- Call ShowConsoleMsg("Valor incorrecto. Utilice /telep NICKNAME MAPA X Y.")
- End If
- ElseIf CantidadArgumentos = 2 Then
- If ValidNumber(ArgumentosAll(0), eNumber_Types.ent_Byte) And ValidNumber(ArgumentosAll(1), eNumber_Types.ent_Byte) Then
- ' Por defecto, se considera que se quiere unicamente cambiar las coordenadas del usuario, en el mismo mapa
- Call WriteWarpChar("YO", UserMap, ArgumentosAll(0), ArgumentosAll(1))
- Else
- 'No uso ningun formato por defecto
- Call ShowConsoleMsg("Valor incorrecto. Utilice /telep NICKNAME MAPA X Y.")
- End If
- Else
- 'Avisar que falta el parametro
- Call ShowConsoleMsg("Faltan parámetros. Utilice /telep NICKNAME MAPA X Y.")
- End If
-
  Case "/SILENCIAR"
  If notNullArguments Then
  Call WriteSilence(ArgumentosRaw)
@@ -571,14 +628,6 @@ define(['enums', 'font'], function (Enums, Font) {
 
  Case "/DENUNCIAS"
  Call WriteEnableDenounces
-
- Case "/IRA"
- If notNullArguments Then
- Call WriteGoToChar(ArgumentosRaw)
- Else
- 'Avisar que falta el parametro
- Call ShowConsoleMsg("Faltan parámetros. Utilice /ira NICKNAME.")
- End If
 
  Case "/INVISIBLE"
  Call WriteInvisible

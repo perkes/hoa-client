@@ -520,7 +520,11 @@ define(['../utils/util', 'enums', 'font', 'network/protocol', 'network/bytequeue
         }
 
         handleShowSOSForm(Data) {
-            log.network("TODO: handleShowSOSForm ");
+            var sos_list = Data.split('\0');
+            for (let index = 0; index < sos_list.length; ++index) {
+                const element = sos_list[index];
+                this.game.escribirMsgConsola(element, Font.GM);
+            }
         }
 
         handleShowMOTDEditionForm(Data) {

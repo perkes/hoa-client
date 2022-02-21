@@ -62,12 +62,22 @@
 
             var token_ids = Object.keys(token_images);
             var total_characters = token_ids.length;
-            var i = 1;
+            var i = 0;
 
             this.currentCharacterAddress = token_addresses[token_ids[0]];
             $('#carousel_pcs').on('slide.bs.carousel', function(e) {
-                self.currentCharacterAddress = token_addresses[token_ids[i%total_characters]];
-                i += 1;
+                if (e.direction == 'left') {
+                    i += 1;
+                    if (i == total_characters) {
+                        i = 0;
+                    }
+                } else {
+                    i -= 1;
+                    if (i == -1) {
+                        i = total_characters - 1;
+                    }
+                }
+                self.currentCharacterAddress = token_addresses[token_ids[i]];
             });
 
             this.loaded = true;
