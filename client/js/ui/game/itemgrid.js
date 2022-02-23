@@ -63,10 +63,10 @@ define(['jquery-ui'], function () {
             }
         }
 
-        modificarSlot(numSlot, cantidad, numGraf, equiped) {
+        modificarSlot(numSlot, cantidad, numGraf, objName, equiped) {
             var $item = this._getItem(numSlot);
             if (!$item.length) {
-                $item = this._crearItem(numSlot);
+                $item = this._crearItem(numSlot, objName);
                 //$item.data("slot", numSlot);
             }
 
@@ -106,9 +106,9 @@ define(['jquery-ui'], function () {
             return this._getSlot(numSlot).children();
         }
 
-        _crearItem(numSlot) {
+        _crearItem(numSlot, objName) {
             let $parentSlot = this._getSlot(numSlot);
-            var $item = $('<li></li>').appendTo($parentSlot);
+            var $item = $('<li title="' + objName +'"></li>').appendTo($parentSlot);
             if (this.dragAndDropable) {
                 $item.draggable({
                     distance: 15,

@@ -12,6 +12,10 @@ define(['app', 'assets/assetmanager', 'ui/uimanager', 'storage/settings', 'lib/l
 
     var initApp = function () {
         $(document).ready(function () {
+            
+            $(document).tooltip({
+                tooltipClass: "uitooltip"
+            });
 
             settings = new Settings();
             assetManager = new AssetManager();

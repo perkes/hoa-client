@@ -46,17 +46,26 @@ define(['utils/charcodemap', 'ui/game/itemgrid'], function (CharCodeMap, ItemGri
                 self.game.toggleSeguroResucitar();
             });
 
+            $('#botonSeguroResucitar').prop('title', 'Resurrection Safety');
+
+
             $("#botonSeguroAtacar").click(function () {
                 self.game.toggleSeguroAtacar();
             });
+
+            $('#botonSeguroAtacar').prop('title', 'Safety');
 
             $("#botonMacroHechizos").click(function () {
                 self.acciones.toggleMacroHechizos();
             });
 
+            $('#botonMacroHechizos').prop('title', 'Spells Macro');
+
             $("#botonMacroTrabajo").click(function () {
                 self.acciones.toggleMacroTrabajo();
             });
+
+            $('#botonMacroTrabajo').prop('title', 'Work Macro');
 
             $("#menuJuegoBotonMenu").click(function () {
                 self.game.gameUI.showMenu();
@@ -82,14 +91,14 @@ define(['utils/charcodemap', 'ui/game/itemgrid'], function (CharCodeMap, ItemGri
                 self.setSelectedSlotHechizo(slot + 1);
             });
 
-            //FIX bug firefox que no previene movimiento scroll hehcizos
+            //FIX bug firefox que no previene movimiento scroll hechizos
             if (Detect.isFirefox()) {
                 self.setHechizosScrollFirefoxFix(self);
             }
         }
 
-        cambiarSlotInventario(numSlot, Amount, numGrafico, equiped) {
-            this.inventarioGrid.modificarSlot(numSlot, Amount, numGrafico, equiped);
+        cambiarSlotInventario(numSlot, Amount, numGrafico, objName, equiped) {
+            this.inventarioGrid.modificarSlot(numSlot, Amount, numGrafico, objName, equiped);
         }
 
         borrarSlotInventario(slot) {

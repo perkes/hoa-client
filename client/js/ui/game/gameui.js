@@ -168,12 +168,12 @@ define(['enums', 'ui/game/keymouselistener', 'ui/popups/popupskills', 'ui/popups
             updateSlotUser(numSlot, slot) { //todo: feo todo esto!
                 if (slot) {
                     var numGrafico = this.game.assetManager.getNumCssGraficoFromGrh(slot.grh);
-                    this.interfaz.cambiarSlotInventario(numSlot, slot.cantidad, numGrafico, slot.equipado);
+                    this.interfaz.cambiarSlotInventario(numSlot, slot.cantidad, numGrafico, slot.objName, slot.equipado);
                     if (this.comerciar.visible) {
-                        this.comerciar.cambiarSlotVenta(numSlot, slot.cantidad, numGrafico);
+                        this.comerciar.cambiarSlotVenta(numSlot, slot.cantidad, numGrafico, slot.objName);
                     }
                     if (this.boveda.visible) {
-                        this.boveda.cambiarSlotDepositar(numSlot, slot.cantidad, numGrafico);
+                        this.boveda.cambiarSlotDepositar(numSlot, slot.cantidad, numGrafico, slot.objName);
                     }
                 }
                 else {
@@ -190,7 +190,7 @@ define(['enums', 'ui/game/keymouselistener', 'ui/popups/popupskills', 'ui/popups
             updateSlotShop(numSlot, slot) {
                 if (slot) {
                     var numGrafico = this.game.assetManager.getNumCssGraficoFromGrh(slot.grh);
-                    this.comerciar.cambiarSlotCompra(numSlot, slot.cantidad, numGrafico);
+                    this.comerciar.cambiarSlotCompra(numSlot, slot.cantidad, numGrafico, slot.objName);
                 }
                 else {
                     this.comerciar.borrarSlotCompra(numSlot);
@@ -200,7 +200,7 @@ define(['enums', 'ui/game/keymouselistener', 'ui/popups/popupskills', 'ui/popups
             updateSlotBank(numSlot, slot) {
                 if (slot) {
                     var numGrafico = this.game.assetManager.getNumCssGraficoFromGrh(slot.grh);
-                    this.boveda.cambiarSlotRetirar(numSlot, slot.cantidad, numGrafico);
+                    this.boveda.cambiarSlotRetirar(numSlot, slot.cantidad, numGrafico, slot.objName);
                 } else {
                     this.boveda.borrarSlotRetirar(numSlot);
                 }

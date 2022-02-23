@@ -31,7 +31,7 @@ define(["text!../../../menus/comerciar.html!strip", 'ui/popups/popup', 'ui/game/
             this.game.inventario.forEachSlot(
                 function (slot) {
                     var numGraf = self.game.assetManager.getNumCssGraficoFromGrh(slot.grh);
-                    self.userGrid.modificarSlot(slot.numero, slot.cantidad, numGraf);
+                    self.userGrid.modificarSlot(slot.numero, slot.cantidad, numGraf, slot.objName);
                 });
             this.shopGrid.deselect();
             this.userGrid.deselect();
@@ -45,12 +45,12 @@ define(["text!../../../menus/comerciar.html!strip", 'ui/popups/popup', 'ui/game/
             }
         }
 
-        cambiarSlotCompra(Slot, Amount, numGrafico) {
-            this.shopGrid.modificarSlot(Slot, Amount, numGrafico);
+        cambiarSlotCompra(Slot, Amount, numGrafico, objName) {
+            this.shopGrid.modificarSlot(Slot, Amount, numGrafico, objName);
         }
 
-        cambiarSlotVenta(Slot, Amount, numGrafico) {
-            this.userGrid.modificarSlot(Slot, Amount, numGrafico);
+        cambiarSlotVenta(Slot, Amount, numGrafico, objName) {
+            this.userGrid.modificarSlot(Slot, Amount, numGrafico, objName);
         }
 
         borrarSlotCompra(slot) {
