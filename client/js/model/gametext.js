@@ -31,7 +31,7 @@ define(['enums', 'font'],
                         bodyPartMessage = Enums.MensajeConsola.RECIBE_IMPACTO_TORSO;
                         break;
                     default:
-                        throw new Error("Mensaje de parte de cuerpo invalido");
+                        throw new Error("Invalid body part message.");
                 }
 
                 var mensaje_golpe = Enums.MensajeConsola.MENSAJE_GOLPE_2;
@@ -67,7 +67,7 @@ define(['enums', 'font'],
                         bodyPartMessage = Enums.MensajeConsola.MENSAJE_GOLPE_TORSO;
                         break;
                     default:
-                        throw new Error("Mensaje de parte de cuerpo invalido");
+                        throw new Error("Invalid body part message.");
                 }
 
                 var txt = Enums.MensajeConsola.MENSAJE_1 + bodyPartMessage + danio;
@@ -122,7 +122,7 @@ define(['enums', 'font'],
                         bodyPartMessage = Enums.MensajeConsola.PRODUCE_IMPACTO_TORSO;
                         break;
                     default:
-                        throw new Error("Mensaje de parte de cuerpo invalido");
+                        throw new Error("Invalid body part message.");
                 }
                 let attackerName = hittedUser.nombre;
 

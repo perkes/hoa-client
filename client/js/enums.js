@@ -1,6 +1,10 @@
 define({
     /* valor default primer elemento enums en VB: 0 */
 
+    Constants: {
+        GOLD_PER_LEVEL: 3000
+    },
+
     Heading: {
         norte: 1,
         este: 2,

@@ -2,7 +2,7 @@
  * Created by horacio on 2/28/16.
  */
 
-define(['utils/charcodemap', 'ui/game/itemgrid'], function (CharCodeMap, ItemGrid) {
+define(['utils/charcodemap', 'ui/game/itemgrid', 'enums'], function (CharCodeMap, ItemGrid, Enums) {
 
     class Interfaz {
         constructor(game, acciones) {
@@ -151,6 +151,11 @@ define(['utils/charcodemap', 'ui/game/itemgrid'], function (CharCodeMap, ItemGri
 
         updateOro(oro) {
             $("#indicadorOro").text(oro);
+            if (oro > (this.game.atributos.nivel * Enums.Constants.GOLD_PER_LEVEL)) {
+                $("#indicadorOro").css('color', '#d81111');
+            } else {
+                $("#indicadorOro").css('color', '#a88954');
+            }
         }
 
         _updateBarra(cant, max, $barra, $label, noInvertida) {

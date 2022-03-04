@@ -4078,7 +4078,7 @@ output {
   line-height: 1.42857;
   color: #9f8e80; }
 
-.form-control {
+  .form-control {
   display: block;
   width: 100%;
   height: 28px;
@@ -8354,6 +8354,15 @@ footer a {
   background: url("../imagenes/lighten.png") repeat, url("../imagenes/botones/boton_abajo_inventario.png") no-repeat;
   background-size: 100% 100%; }
 
+#comerciarUsuariosGridInventario {
+  padding-left: 9px; }
+
+#comerciarUsuariosGridMiOferta {
+  padding-left: 9px; }
+
+#comerciarUsuariosGridSuOferta {
+  padding-left: 9px; }
+
 #itemsGrid {
   position: absolute;
   left: 10.3%;
@@ -8568,7 +8577,7 @@ footer a {
   overflow-y: auto;
   list-style-type: none;
   padding: 3px;
-  width: 160px;
+  width: 100%;
   height: 100%;
   border: 1px solid #978471;
   margin-top: 0;

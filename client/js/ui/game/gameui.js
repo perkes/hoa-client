@@ -2,12 +2,12 @@
  * Created by horacio on 2/21/16.
  */
 
-define(['enums', 'ui/game/keymouselistener', 'ui/popups/popupskills', 'ui/popups/comerciar', 'ui/popups/ingamemensaje',
+define(['enums', 'ui/game/keymouselistener', 'ui/popups/popupskills', 'ui/popups/comerciar', 'ui/popups/comerciarUsuarios', 'ui/popups/ingamemensaje',
         'ui/game/interfaz', 'ui/popups/tirar', 'ui/popups/boveda', 'ui/popups/guiamapa', 'ui/popups/opciones', 'ui/popups/carpinteria',
         'ui/popups/herreria', 'ui/popups/clanes', 'ui/popups/detallesclan', 'ui/popups/solicitudclan', 'ui/popups/eleccionfaccionclan',
         'ui/popups/crearclan', 'ui/popups/noticiasclan', 'ui/popups/detallespersonaje', 'ui/popups/estadisticas', 'ui/popups/partylider',
         'ui/popups/partymiembro', 'ui/popups/menu'],
-    function (Enums, KeyMouseListener, popUpSkills, Comerciar, InGameMensaje, Interfaz, Tirar, Boveda, GuiaMapa, Opciones,
+    function (Enums, KeyMouseListener, popUpSkills, Comerciar, ComerciarUsuarios, InGameMensaje, Interfaz, Tirar, Boveda, GuiaMapa, Opciones,
               Carpinteria, Herreria, Clanes, DetallesClan, SolicitudClan, EleccionFaccionClan, CrearClan, NoticiasClan,
               DetallesPersonaje, Estadisticas, PartyLider, PartyMiembro, Menu) {
 
@@ -66,6 +66,14 @@ define(['enums', 'ui/game/keymouselistener', 'ui/popups/popupskills', 'ui/popups
 
             hideComerciar(incomingFromServer) {
                 this.comerciar.hide(incomingFromServer);
+            }
+
+            showComerciarUsuarios() {
+                this.comerciarUsuarios.show();
+            }
+
+            hideComerciarUsuarios(incomingFromServer) {
+                this.comerciarUsuarios.hide(incomingFromServer);
             }
 
             showMensaje(msj) {
@@ -232,6 +240,11 @@ define(['enums', 'ui/game/keymouselistener', 'ui/popups/popupskills', 'ui/popups
             get comerciar() {
                 this._comerciar = this._comerciar || this._initPopUp(new Comerciar(this.game, this.acciones));
                 return this._comerciar;
+            }
+
+            get comerciarUsuarios() {
+                this._comerciarUsuarios = this._comerciarUsuarios || this._initPopUp(new ComerciarUsuarios(this.game, this.acciones));
+                return this._comerciarUsuarios;
             }
 
             get tirar() {

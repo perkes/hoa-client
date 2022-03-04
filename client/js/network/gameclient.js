@@ -122,11 +122,11 @@ define(['../utils/util', 'enums', 'font', 'network/protocol', 'network/bytequeue
         }
 
         handleUserCommerceInit(DestUserName) {
-            log.network("TODO: handleUserCommerceInit ");
+            this.gameUI.showComerciarUsuarios();
         }
 
         handleUserCommerceEnd() {
-            log.network("TODO: handleUserCommerceEnd ");
+            this.gameUI.hideComerciarUsuarios(true);
         }
 
         handleUserOfferConfirm() {
@@ -278,8 +278,8 @@ define(['../utils/util', 'enums', 'font', 'network/protocol', 'network/bytequeue
             this.game.atributos.setMana(MinMan, MaxMan);
             this.game.atributos.setStamina(MinSta, MaxSta);
             this.game.atributos.setExp(Exp, Elu);
-            this.game.atributos.setOro(Gld);
             this.game.atributos.setNivel(Elv);
+            this.game.atributos.setOro(Gld);
         }
 
         handleChangeInventorySlot(Slot, ObjIndex, ObjName, Amount, Equiped, GrhIndex, ObjType, MaxHit, MinHit, MaxDef, MinDef, ObjSalePrice) {
@@ -475,8 +475,9 @@ define(['../utils/util', 'enums', 'font', 'network/protocol', 'network/bytequeue
         }
 
         handleTradeOK() {
-            //this.game.assetManager.audio.playSound(Enums.SONIDOS.comprar_vender);
-            log.network("TODO: handleTradeOK ");
+            this.game.assetManager.audio.playSound(Enums.SONIDOS.comprar_vender);
+            //log.network("TODO: handleTradeOK ");
+            //this.gameUI.showComerciar();
         }
 
         handleBankOK() {
@@ -484,7 +485,7 @@ define(['../utils/util', 'enums', 'font', 'network/protocol', 'network/bytequeue
         }
 
         handleChangeUserTradeSlot(OfferSlot, ObjIndex, Amount, GrhIndex, ObjType, MaxHit, MinHit, MaxDef, MinDef, Price, ObjName) {
-            log.network("TODO: handleChangeUserTradeSlot ");
+            this.gameUI.comerciarUsuarios.mostrarOfertaContraparte(OfferSlot, ObjIndex, Amount, GrhIndex, ObjType, MaxHit, MinHit, MaxDef, MinDef, Price, ObjName);
         }
 
         handleSendNight(Night) {
