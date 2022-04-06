@@ -359,8 +359,8 @@ define(['../utils/util', 'enums', 'font', 'network/protocol', 'network/bytequeue
             log.network("TODO: handleShowSignal ");
         }
 
-        handleChangeNPCInventorySlot(Slot, ObjName, Amount, Price, GrhIndex, ObjIndex, ObjType, MaxHit, MinHit, MaxDef, MinDef) {
-            this.game.cambiarSlotCompra(Slot, ObjName, Amount, Price, GrhIndex, ObjIndex, ObjType, MaxHit, MinHit, MaxDef, MinDef);
+        handleChangeNPCInventorySlot(Slot, ObjName, Amount, Price, CanUse, GrhIndex, ObjIndex, ObjType, MaxHit, MinHit, MaxDef, MinDef) {
+            this.game.cambiarSlotCompra(Slot, ObjName, Amount, Price, CanUse, GrhIndex, ObjIndex, ObjType, MaxHit, MinHit, MaxDef, MinDef);
         }
 
         handleUpdateHungerAndThirst(MaxAgu, MinAgu, MaxHam, MinHam) {

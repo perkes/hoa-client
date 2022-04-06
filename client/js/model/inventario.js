@@ -9,7 +9,7 @@ define([], function () {
             this._slots = [];
         }
 
-        cambiarSlot(numSlot, ObjName, Amount, Price, GrhIndex, ObjIndex, ObjType, MaxHit, MinHit, MaxDef, MinDef, Equiped) {
+        cambiarSlot(numSlot, ObjName, Amount, Price, CanUse, GrhIndex, ObjIndex, ObjType, MaxHit, MinHit, MaxDef, MinDef, Equiped) {
             var nuevoSlot;
             if (this.isValidSlot(Amount, GrhIndex)) {
                 nuevoSlot = {
@@ -24,6 +24,7 @@ define([], function () {
                     maxDef: MaxDef,
                     minDef: MinDef,
                     precio: Price,
+                    canUse: CanUse,
                     equipado: Equiped
                 };
             } else {

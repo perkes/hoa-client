@@ -63,7 +63,7 @@ define(['jquery-ui'], function () {
             }
         }
 
-        modificarSlot(numSlot, cantidad, numGraf, objName, equiped) {
+        modificarSlot(numSlot, cantidad, numGraf, objName, equiped, canUse) {
             var $item = this._getItem(numSlot);
             if (!$item.length) {
                 $item = this._crearItem(numSlot, objName);
@@ -73,6 +73,11 @@ define(['jquery-ui'], function () {
             $item.text(cantidad + "");
             var url = 'url(graficos/css/' + numGraf + '.png)';
             $item.css('background-image', url);
+
+            if (!canUse) {
+                $item.css('webkit-filter', 'invert(40%) grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(300%) contrast(2)');
+            }
+
             if (equiped) {
                 $item.addClass("equiped");
             } else {

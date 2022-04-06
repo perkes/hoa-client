@@ -7011,6 +7011,7 @@ function ServerPacketDecodeAndDispatch(buffer, handler) {
             var ObjName = buffer.ReadUnicodeString();
             var Amount = buffer.ReadInteger();
             var Price = buffer.ReadSingle();
+            var CanUse = buffer.ReadBoolean();
             var GrhIndex = buffer.ReadInteger();
             var ObjIndex = buffer.ReadInteger();
             var ObjType = buffer.ReadByte();
@@ -7019,7 +7020,7 @@ function ServerPacketDecodeAndDispatch(buffer, handler) {
             var MaxDef = buffer.ReadInteger();
             var MinDef = buffer.ReadInteger();
 
-            handler.handleChangeNPCInventorySlot(Slot,ObjName,Amount,Price,GrhIndex,ObjIndex,ObjType,MaxHit,MinHit,MaxDef,MinDef);
+            handler.handleChangeNPCInventorySlot(Slot,ObjName,Amount,Price,CanUse,GrhIndex,ObjIndex,ObjType,MaxHit,MinHit,MaxDef,MinDef);
 
             break;
         }

@@ -307,7 +307,7 @@ define(['model/mapa', 'updater', 'model/item', 'model/character', 'model/atribut
             }
 
             cambiarSlotInventario(numSlot, ObjIndex, ObjName, Amount, Equiped, GrhIndex, ObjType, MaxHit, MinHit, MaxDef, MinDef, ObjSalePrice) {
-                this.inventario.cambiarSlot(numSlot, ObjName, Amount, ObjSalePrice, GrhIndex, ObjIndex, ObjType, MaxHit, MinHit, MaxDef, MinDef, Equiped);
+                this.inventario.cambiarSlot(numSlot, ObjName, Amount, ObjSalePrice, null, GrhIndex, ObjIndex, ObjType, MaxHit, MinHit, MaxDef, MinDef, Equiped);
                 this.gameUI.updateSlotUser(numSlot, this.inventario.getSlot(numSlot));
             }
 
@@ -495,14 +495,14 @@ define(['model/mapa', 'updater', 'model/item', 'model/character', 'model/atribut
                 this.trabajoPendiente = null;
             }
 
-            cambiarSlotCompra(numSlot, ObjName, Amount, Price, GrhIndex, ObjIndex, ObjType, MaxHit, MinHit, MaxDef, MinDef) {
-                this.inventarioShop.cambiarSlot(numSlot, ObjName, Amount, Price, GrhIndex, ObjIndex, ObjType, MaxHit, MinHit, MaxDef, MinDef);
+            cambiarSlotCompra(numSlot, ObjName, Amount, Price, CanUse, GrhIndex, ObjIndex, ObjType, MaxHit, MinHit, MaxDef, MinDef) {
+                this.inventarioShop.cambiarSlot(numSlot, ObjName, Amount, Price, CanUse, GrhIndex, ObjIndex, ObjType, MaxHit, MinHit, MaxDef, MinDef);
                 this.gameUI.updateSlotShop(numSlot, this.inventarioShop.getSlot(numSlot));
 
             }
 
             cambiarSlotRetirar(numSlot, ObjIndex, ObjName, Amount, GrhIndex, ObjType, MaxHit, MinHit, MaxDef, MinDef, ObjSalePrice) {
-                this.bankShop.cambiarSlot(numSlot, ObjName, Amount, ObjSalePrice, GrhIndex, ObjIndex, ObjType, MaxHit, MinHit, MaxDef, MinDef);
+                this.bankShop.cambiarSlot(numSlot, ObjName, Amount, ObjSalePrice, null, GrhIndex, ObjIndex, ObjType, MaxHit, MinHit, MaxDef, MinDef);
                 this.gameUI.updateSlotBank(numSlot, this.bankShop.getSlot(numSlot));
             }
 

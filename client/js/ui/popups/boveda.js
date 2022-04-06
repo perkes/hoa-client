@@ -30,7 +30,7 @@ define(["text!../../../menus/boveda.html!strip", 'ui/popups/popup', 'ui/game/ite
             this.game.inventario.forEachSlot(
                 function (slot) {
                     var numGraf = self.game.assetManager.getNumCssGraficoFromGrh(slot.grh);
-                    self.userGrid.modificarSlot(slot.numero, slot.cantidad, numGraf, slot.objName);
+                    self.userGrid.modificarSlot(slot.numero, slot.cantidad, numGraf, slot.objName, false, true);
                 });
 
             this.shopGrid.deselect();
@@ -45,11 +45,11 @@ define(["text!../../../menus/boveda.html!strip", 'ui/popups/popup', 'ui/game/ite
         }
 
         cambiarSlotRetirar(Slot, Amount, numGrafico, objName) {
-            this.shopGrid.modificarSlot(Slot, Amount, numGrafico, objName);
+            this.shopGrid.modificarSlot(Slot, Amount, numGrafico, objName, false, true);
         }
 
         cambiarSlotDepositar(Slot, Amount, numGrafico, objName) {
-            this.userGrid.modificarSlot(Slot, Amount, numGrafico, objName);
+            this.userGrid.modificarSlot(Slot, Amount, numGrafico, objName, false, true);
         }
 
         borrarSlotRetirar(slot) {

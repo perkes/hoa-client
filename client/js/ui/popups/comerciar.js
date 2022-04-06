@@ -31,26 +31,27 @@ define(["text!../../../menus/comerciar.html!strip", 'ui/popups/popup', 'ui/game/
             this.game.inventario.forEachSlot(
                 function (slot) {
                     var numGraf = self.game.assetManager.getNumCssGraficoFromGrh(slot.grh);
-                    self.userGrid.modificarSlot(slot.numero, slot.cantidad, numGraf, slot.objName);
+                    self.userGrid.modificarSlot(slot.numero, slot.cantidad, numGraf, slot.objName, false, true);
                 });
             this.shopGrid.deselect();
             this.userGrid.deselect();
-            this.completarLabels("", "","", "", "", "");
+            this.completarLabels("", "", "", "", "", "", "", "");
         }
 
         hide(incomingFromServer) {
             super.hide();
+            this.shopGrid.clear();
             if (!incomingFromServer) { // TODO: (en comerciar y en boveda!!) que el cliente no le tenga que mandar al sv cuando cierra, esta accion no deberia estar
                 this.acciones.cerrarComerciar();
             }
         }
 
-        cambiarSlotCompra(Slot, Amount, numGrafico, objName) {
-            this.shopGrid.modificarSlot(Slot, Amount, numGrafico, objName);
+        cambiarSlotCompra(Slot, Amount, numGrafico, objName, canUse) {
+            this.shopGrid.modificarSlot(Slot, Amount, numGrafico, objName, false, canUse);
         }
 
-        cambiarSlotVenta(Slot, Amount, numGrafico, objName) {
-            this.userGrid.modificarSlot(Slot, Amount, numGrafico, objName);
+        cambiarSlotVenta(Slot, Amount, numGrafico, objName, canUse) {
+            this.userGrid.modificarSlot(Slot, Amount, numGrafico, objName, false, true);
         }
 
         borrarSlotCompra(slot) {
@@ -127,10 +128,10 @@ define(["text!../../../menus/comerciar.html!strip", 'ui/popups/popup', 'ui/game/
             var minVal = item.minDef || item.minHit;
             var maxVal = item.maxDef || item.maxHit;
 
-            this.completarLabels(item.objName.toUpperCase(), item.precio, minLabel, minVal, maxLabel, maxVal);
+            this.completarLabels(item.objName.toUpperCase(), item.precio, "USABLE", item.canUse, minLabel, minVal, maxLabel, maxVal);
         }
 
-        completarLabels(nombreVal, precioVal, minLabel, minVal, maxLabel, maxVal) {
+        completarLabels(nombreVal, precioVal, canUseLabel, canUseVal, minLabel, minVal, maxLabel, maxVal) {
             if (!minLabel) {
                 minVal = "";
             }
@@ -138,9 +139,20 @@ define(["text!../../../menus/comerciar.html!strip", 'ui/popups/popup', 'ui/game/
                 maxVal = "";
             }
 
+            var usableVal = "NO";
+            if (canUseVal) {
+                usableVal = "YES";
+            }
+
+            if (canUseLabel == "") {
+                usableVal = "";
+            }
+
             $('#comerciarPrecio').text("PRICE");
             $('#comerciarNombre').text("NAME");
             $('#comerciarPrecioValor').text(precioVal);
+            $('#comerciarUsable').text(canUseLabel);
+            $('#comerciarUsableValor').text(usableVal);
             $('#comerciarNombreValor').text(nombreVal);
             $('#comerciarMin').text(minLabel);
             $('#comerciarMinValor').text(minVal);

@@ -98,7 +98,7 @@ define(['utils/charcodemap', 'ui/game/itemgrid', 'enums'], function (CharCodeMap
         }
 
         cambiarSlotInventario(numSlot, Amount, numGrafico, objName, equiped) {
-            this.inventarioGrid.modificarSlot(numSlot, Amount, numGrafico, objName, equiped);
+            this.inventarioGrid.modificarSlot(numSlot, Amount, numGrafico, objName, equiped, true);
         }
 
         borrarSlotInventario(slot) {

@@ -42,7 +42,7 @@ define(["text!../../../menus/comerciarUsuarios.html!strip", 'ui/popups/popup', '
             this.game.inventario.forEachSlot(
                 function (slot) {
                     var numGraf = self.game.assetManager.getNumCssGraficoFromGrh(slot.grh);
-                    self.inventory.modificarSlot(slot.numero, slot.cantidad, numGraf, slot.objName);
+                    self.inventory.modificarSlot(slot.numero, slot.cantidad, numGraf, slot.objName, false, true);
                     self.inventoryAmounts[slot.objIndex] = slot.cantidad;
                     self.indexToNumSlot[slot.objIndex] = slot.numero;
                 });
@@ -69,15 +69,15 @@ define(["text!../../../menus/comerciarUsuarios.html!strip", 'ui/popups/popup', '
         }
 
         cambiarSlotInventario(Slot, Amount, numGrafico, objName) {
-            this.inventory.modificarSlot(Slot, Amount, numGrafico, objName);
+            this.inventory.modificarSlot(Slot, Amount, numGrafico, objName, false, true);
         }
 
         cambiarSlotOferta(Slot, Amount, numGrafico, objName) {
-            this.userOfferGrid.modificarSlot(Slot, Amount, numGrafico, objName);
+            this.userOfferGrid.modificarSlot(Slot, Amount, numGrafico, objName, false, true);
         }
 
         cambiarSlotOfertaContraparte(Slot, Amount, numGrafico, objName) {
-            this.otherUserOfferGrid.modificarSlot(Slot, Amount, numGrafico, objName);
+            this.otherUserOfferGrid.modificarSlot(Slot, Amount, numGrafico, objName, false, true);
         }
 
         borrarSlotInventario(slot) {
