@@ -7332,9 +7332,10 @@ function ServerPacketDecodeAndDispatch(buffer, handler) {
             var MaxDef = buffer.ReadInteger();
             var MinDef = buffer.ReadInteger();
             var Price = buffer.ReadLong();
+            var CanUse = buffer.ReadBoolean();
             var ObjName = buffer.ReadUnicodeString();
 
-            handler.handleChangeUserTradeSlot(OfferSlot,ObjIndex,Amount,GrhIndex,ObjType,MaxHit,MinHit,MaxDef,MinDef,Price,ObjName);
+            handler.handleChangeUserTradeSlot(OfferSlot,ObjIndex,Amount,GrhIndex,ObjType,MaxHit,MinHit,MaxDef,MinDef,Price,CanUse,ObjName);
 
             break;
         }

@@ -24,12 +24,13 @@ define(["text!../../../menus/comerciarUsuarios.html!strip", 'ui/popups/popup', '
             this.userOfferGrid = new ItemGrid("comerciarUsuariosGridMiOferta",20);
             this.otherUserOfferGrid = new ItemGrid("comerciarUsuariosGridSuOferta",20);
 
+            this.numItemsOfferGrid = 0;
+            this.numItemsOtherUserOfferGrid = 0;
+
             this.userOfferNumSlots = new Object();
             this.userOfferAmounts = new Object();
-
             this.inventoryNumSlots = new Object();
             this.inventoryAmounts = new Object();
-
             this.indexToNumSlot = new Object();
 
             this.initCallbacks();
@@ -49,6 +50,8 @@ define(["text!../../../menus/comerciarUsuarios.html!strip", 'ui/popups/popup', '
 
             this.userOfferGrid.clear();
             this.otherUserOfferGrid.clear();
+            this.numItemsOfferGrid = 0;
+            this.numItemsOtherUserOfferGrid = 0;
             
             $("#comerciarUsuariosOroRestante").text(this.game.atributos.oro.toString());
             $("#comerciarUsuariosInput").val(1);
@@ -73,11 +76,13 @@ define(["text!../../../menus/comerciarUsuarios.html!strip", 'ui/popups/popup', '
         }
 
         cambiarSlotOferta(Slot, Amount, numGrafico, objName) {
-            this.userOfferGrid.modificarSlot(Slot, Amount, numGrafico, objName, false, true);
+            this.numItemsOfferGrid += 1;
+            this.userOfferGrid.modificarSlot(this.numItemsOfferGrid, Amount, numGrafico, objName, false, true);
         }
 
-        cambiarSlotOfertaContraparte(Slot, Amount, numGrafico, objName) {
-            this.otherUserOfferGrid.modificarSlot(Slot, Amount, numGrafico, objName, false, true);
+        cambiarSlotOfertaContraparte(Slot, Amount, numGrafico, objName, canUse) {
+            this.numItemsOtherUserOfferGrid += 1;
+            this.otherUserOfferGrid.modificarSlot(this.numItemsOtherUserOfferGrid, Amount, numGrafico, objName, false, canUse);
         }
 
         borrarSlotInventario(slot) {
@@ -120,7 +125,7 @@ define(["text!../../../menus/comerciarUsuarios.html!strip", 'ui/popups/popup', '
             }
         }
 
-        mostrarOfertaContraparte(OfferSlot, ObjIndex, Amount, GrhIndex, ObjType, MaxHit, MinHit, MaxDef, MinDef, Price, ObjName) {
+        mostrarOfertaContraparte(OfferSlot, ObjIndex, Amount, GrhIndex, ObjType, MaxHit, MinHit, MaxDef, MinDef, Price, CanUse, ObjName) {
             console.log(OfferSlot, ObjIndex, Amount, GrhIndex, ObjName);
             if (OfferSlot == 21) {
                 $("#comerciarUsuariosSuOfertaOro").text(Amount.toString());
@@ -128,7 +133,7 @@ define(["text!../../../menus/comerciarUsuarios.html!strip", 'ui/popups/popup', '
             }
 
             var numGrafico = this.game.assetManager.getNumCssGraficoFromGrh(GrhIndex);
-            this.cambiarSlotOfertaContraparte(OfferSlot, Amount, numGrafico, ObjName);
+            this.cambiarSlotOfertaContraparte(OfferSlot, Amount, numGrafico, ObjName, CanUse);
         }
 
         initCallbacks() {

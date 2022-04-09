@@ -484,8 +484,8 @@ define(['../utils/util', 'enums', 'font', 'network/protocol', 'network/bytequeue
             this.game.assetManager.audio.playSound(Enums.SONIDOS.retirar_depositar);
         }
 
-        handleChangeUserTradeSlot(OfferSlot, ObjIndex, Amount, GrhIndex, ObjType, MaxHit, MinHit, MaxDef, MinDef, Price, ObjName) {
-            this.gameUI.comerciarUsuarios.mostrarOfertaContraparte(OfferSlot, ObjIndex, Amount, GrhIndex, ObjType, MaxHit, MinHit, MaxDef, MinDef, Price, ObjName);
+        handleChangeUserTradeSlot(OfferSlot, ObjIndex, Amount, GrhIndex, ObjType, MaxHit, MinHit, MaxDef, MinDef, Price, CanUse, ObjName) {
+            this.gameUI.comerciarUsuarios.mostrarOfertaContraparte(OfferSlot, ObjIndex, Amount, GrhIndex, ObjType, MaxHit, MinHit, MaxDef, MinDef, Price, CanUse, ObjName);
         }
 
         handleSendNight(Night) {
