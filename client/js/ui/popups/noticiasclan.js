@@ -26,8 +26,8 @@ define(["text!../../../menus/noticiasClan.html!strip", 'ui/popups/popup'], funct
         show(noticias, enemigos, aliados) {
             super.show();
             this.$noticias.text(noticias);
-            this.$enemigos.text(enemigos.join('\n'));
-            this.$aliados.text(aliados.join('\n'));
+            //this.$enemigos.text(enemigos.join('\n'));
+            //this.$aliados.text(aliados.join('\n'));
         }
 
         initCallbacks() {

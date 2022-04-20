@@ -8,7 +8,7 @@ define(["text!../../../menus/clanes.html!strip", 'ui/popups/popup', 'ui/popups/t
 
     class Clanes extends PopUp {
 
-        constructor(game, detallesClan, showMensajeCb, solicitudClanCb) {
+        constructor(game, detallesClan, showMensajeCb, solicitudClanCb, actualizarNoticiasCb, actualizarCodexCb) {
 
             var options = {
                 width: 550,
@@ -26,7 +26,7 @@ define(["text!../../../menus/clanes.html!strip", 'ui/popups/popup', 'ui/popups/t
             this.searchTab = new ClanesSearchTab(game, detallesClan, showMensajeCb, solicitudClanCb);
             this.miembrosTab = new MiembrosClanTab(game, showMensajeCb);
             this.solicitudesTab = new SolicitudesClanTab(game,showMensajeCb);
-            this.settingsTab = new SettingsClanTab();
+            this.settingsTab = new SettingsClanTab(actualizarNoticiasCb, actualizarCodexCb);
 
             this.$miembrosTabButton = $("#clanesMiembrosTabButton");
             this.$solicitudesTabButton = $("#clanesSolicitudesTabButton");

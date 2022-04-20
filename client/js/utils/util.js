@@ -9,8 +9,8 @@ define(function () {
             return ((num % max) + max) % max;
         },
 
-        splitNullArray: function (string) {
-            return string.split("\u0000");
+        splitNullArray: function (str) {
+            return str.split("\u0000");
         },
 
         joinNullArray: function (array) {

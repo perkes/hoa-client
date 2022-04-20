@@ -5,20 +5,21 @@
 define([], function () {
 
     class SettingsClan {
-        constructor() {
+        constructor(actualizarNoticiasCb, actualizarCodexCb) {
+            this.actualizarNoticiasCb = actualizarNoticiasCb;
+            this.actualizarCodexCb = actualizarCodexCb;
             this.initCallbacks();
         }
 
         initCallbacks() {
             var self = this;
-            // this.$botonDetallesClan.click(function () {
-            //     var clanSeleccionado = self._getClanSeleccionado();
-            //     if (!clanSeleccionado) {
-            //         self.showMensajeCb("Debes seleccionar un clan");
-            //     } else {
-            //         self.detallesClan.show(clanSeleccionado);
-            //     }
-            // });
+            $('#clanesEditarNoticias').click(function () {
+                self.actualizarNoticiasCb();
+            });
+
+            $('#clanesEditarCodex').click(function () {
+                self.actualizarCodexCb();
+            });
         }
     }
 

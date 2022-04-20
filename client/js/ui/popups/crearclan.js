@@ -42,7 +42,7 @@ define(["text!../../../menus/crearClan.html!strip", 'ui/popups/popup', 'utils/ut
                     result.push(text);
                 }
             }
-            if (completedLines < 4) {
+            if (completedLines < MINIMUM_LINES) {
                 return false;
             }
             return Utils.joinNullArray(result);

@@ -5,10 +5,10 @@
 define(['enums', 'ui/game/keymouselistener', 'ui/popups/popupskills', 'ui/popups/comerciar', 'ui/popups/comerciarUsuarios', 'ui/popups/ingamemensaje',
         'ui/game/interfaz', 'ui/popups/tirar', 'ui/popups/boveda', 'ui/popups/guiamapa', 'ui/popups/opciones', 'ui/popups/carpinteria',
         'ui/popups/herreria', 'ui/popups/clanes', 'ui/popups/detallesclan', 'ui/popups/solicitudclan', 'ui/popups/eleccionfaccionclan',
-        'ui/popups/crearclan', 'ui/popups/noticiasclan', 'ui/popups/detallespersonaje', 'ui/popups/estadisticas', 'ui/popups/partylider',
+        'ui/popups/crearclan', 'ui/popups/noticiasclan', 'ui/popups/actualizarcodex', 'ui/popups/actualizarnoticias', 'ui/popups/detallespersonaje', 'ui/popups/estadisticas', 'ui/popups/partylider',
         'ui/popups/partymiembro', 'ui/popups/menu'],
     function (Enums, KeyMouseListener, popUpSkills, Comerciar, ComerciarUsuarios, InGameMensaje, Interfaz, Tirar, Boveda, GuiaMapa, Opciones,
-              Carpinteria, Herreria, Clanes, DetallesClan, SolicitudClan, EleccionFaccionClan, CrearClan, NoticiasClan,
+              Carpinteria, Herreria, Clanes, DetallesClan, SolicitudClan, EleccionFaccionClan, CrearClan, NoticiasClan, ActualizarCodex, ActualizarNoticias,
               DetallesPersonaje, Estadisticas, PartyLider, PartyMiembro, Menu) {
 
         class GameUI {
@@ -134,6 +134,14 @@ define(['enums', 'ui/game/keymouselistener', 'ui/popups/popupskills', 'ui/popups
 
             showCrearClan() {
                 this.crearClan.show();
+            }
+
+            showActualizarCodex() {
+                this.actualizarCodex.show(this.game.player.clan.slice(1,-1));
+            }
+
+            showActualizarNoticias() {
+                this.actualizarNoticias.show();
             }
 
             showNoticiasClan(noticias, enemigos, aliados) {
@@ -283,7 +291,7 @@ define(['enums', 'ui/game/keymouselistener', 'ui/popups/popupskills', 'ui/popups
             }
 
             get clanes() {
-                this._clanes = this._clanes || this._initPopUp(new Clanes(this.game, this.detallesClan, this.showMensajeFunction, this._showSolicitudClan.bind(this)));
+                this._clanes = this._clanes || this._initPopUp(new Clanes(this.game, this.detallesClan, this.showMensajeFunction, this._showSolicitudClan.bind(this), this.showActualizarNoticias.bind(this), this.showActualizarCodex.bind(this)));
                 return this._clanes;
             }
 
@@ -305,6 +313,16 @@ define(['enums', 'ui/game/keymouselistener', 'ui/popups/popupskills', 'ui/popups
             get noticiasClan() {
                 this._noticiasClan = this._noticiasClan || this._initPopUp(new NoticiasClan());
                 return this._noticiasClan;
+            }
+
+            get actualizarCodex() {
+                this._actualizarCodex = this._actualizarCodex || this._initPopUp(new ActualizarCodex(this.game));
+                return this._actualizarCodex;
+            }
+
+            get actualizarNoticias() {
+                this._actualizarNoticias = this._actualizarNoticias || this._initPopUp(new ActualizarNoticias(this.game));
+                return this._actualizarNoticias;
             }
 
             get detallesPersonaje() {
