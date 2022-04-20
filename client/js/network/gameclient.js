@@ -459,10 +459,8 @@ define(['../utils/util', 'enums', 'font', 'network/protocol', 'network/bytequeue
         }
 
         handleGuildDetails(GuildName, Founder, FoundationDate, Leader, URL, MemberCount, ElectionsOpen, Aligment, EnemiesCount, AlliesCount, AntifactionPoints, Codex, GuildDesc) {
-            console.log('Handling guild details', Codex);
             this.game.gameUI.detallesClan.setClanInfo(GuildName, Founder, FoundationDate, Leader, URL, MemberCount, ElectionsOpen, Aligment, EnemiesCount, AlliesCount, AntifactionPoints, Codex, GuildDesc);
             this.game.gameUI.actualizarCodex.setClanInfo(GuildName, URL, Codex, GuildDesc);
-
         }
 
         handleShowGuildFundationForm() {
@@ -974,8 +972,8 @@ define(['../utils/util', 'enums', 'font', 'network/protocol', 'network/bytequeue
             p.serialize(this.byteQueue);
         }
 
-        sendClanCodexUpdate(Desc, Codex) {
-            var p = this.protocolo.BuildClanCodexUpdate(Desc, Codex);
+        sendClanCodexUpdate(Desc, Codex, Url) {
+            var p = this.protocolo.BuildClanCodexUpdate(Desc, Codex, Url);
             p.serialize(this.byteQueue);
         }
 

@@ -1165,15 +1165,15 @@ function ClanCodexUpdate (buffer) {
         this.id = ClientPacketID.ClanCodexUpdate /* 47 */;
         if (buffer) {
         buffer.ReadByte(); /* PacketID */
-        this.Desc = buffer.ReadUnicodeString();
-        this.Codex = buffer.ReadUnicodeString();
-
+            this.Desc = buffer.ReadUnicodeString();
+            this.Codex = buffer.ReadUnicodeString();
+            this.Url = buffer.ReadUnicodeString();
         }
     this.serialize = function(buffer) {
         buffer.WriteByte(ClientPacketID.ClanCodexUpdate); /* PacketID: 47 */
         buffer.WriteUnicodeString(this.Desc);
         buffer.WriteUnicodeString(this.Codex);
-
+        buffer.WriteUnicodeString(this.Url);
         buffer.flush();
     };
 
@@ -8009,10 +8009,11 @@ function ServerPacketDecodeAndDispatch(buffer, handler) {
     }
 
 
-    BuildClanCodexUpdate(Desc,  Codex) {
+    BuildClanCodexUpdate(Desc,  Codex, Url) {
         var e = new ClanCodexUpdate();
-    e.Desc= Desc;
-    e.Codex= Codex;
+        e.Desc= Desc;
+        e.Codex= Codex;
+        e.Url = Url;
         return e;
     }
 

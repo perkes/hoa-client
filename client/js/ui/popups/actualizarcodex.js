@@ -17,6 +17,7 @@
             super(DOMdata, options);
 
             this.game = game;
+            this.$url = $("#actualizarClanWebsite");
             this.$desc = $("#actualizarClanDescripcion");
             this.$botonActualizar = $("#actualizarClanBotonActualizar");
             this.$botonCancelar = $("#actualizarClanBotonCancelar");
@@ -33,7 +34,7 @@
 
         setClanInfo(GuildName, URL, Codex, GuildDesc) {
             $("#actualizarClanNombre").text(GuildName);
-            $("#actualizarClanWebsite").text(URL);
+            $("#actualizarClanWebsite").val(URL);
             $("#actualizarClanDescripcion").val(GuildDesc);
 
             var codex_lines = Codex.split('\n');
@@ -68,7 +69,7 @@
             this.$botonActualizar.click(function () {
                 var codex_text = self._getCodexText();
                 if (codex_text) {
-                    self.game.client.sendClanCodexUpdate(self.$desc.val(), codex_text);
+                    self.game.client.sendClanCodexUpdate(self.$desc.val(), codex_text, self.$url.val());
                     self.hide();
                 }
             });
