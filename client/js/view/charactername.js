@@ -7,11 +7,11 @@ define(['enums', 'lib/pixi', 'font', 'view/textstyle'], function (Enums, PIXI, F
     class CharacterName extends PIXI.Text {
         constructor(nombre, clan, font, escala) {
             if (clan) {
-                nombre = nombre + "\n" + clan;
+                nombre = "";//nombre + "\n" + clan;
             }
 
             let style = new TextStyle(Font.NOMBRE_BASE_FONT,escala);
-            super(nombre, style);
+            super("", style);
 
             this.anchor.set(0.5, 0);
 
