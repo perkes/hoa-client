@@ -58,7 +58,7 @@ define(['storage/storage', 'json!../../config.json'], function (Storage, config)
                                             var nft_number = resp['data']['tokenInfo']['name'].split('#')[1];
                                             var nft_name = resp['data']['metadata']['data']['name'];
                                             token_addresses[nft_name] = resp['data']['account']; 
-                                            token_images[nft_name] = 'http://' + config.ip + ':3000/images/' + nft_number + '.png';
+                                            token_images[nft_name] = 'http://' + config.ip + ':8080/images/' + nft_number + '.png';
                                         }
                                     }
                                 } catch(error) {
