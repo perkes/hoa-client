@@ -274,7 +274,9 @@ define(['enums', 'utils/util', 'font', 'lib/pixi', 'view/charactersprites', 'vie
             }
 
             agregarCharacterHoveringInfo(char, valor, font) {
-                char.texto.addHoveringInfo(valor, font);
+                if (char.texto) {
+                    char.texto.addHoveringInfo(valor, font);
+                }
             }
 
             setCharacterFX(char, FX, FXLoops) {
