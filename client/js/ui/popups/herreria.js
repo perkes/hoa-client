@@ -15,6 +15,7 @@ define(["text!../../../menus/herreria.html!strip", 'ui/popups/popup'], function 
             };
             super(DOMdata, options);
 
+            this.items = new Set();
             this.game = game;
             //this.initCallbacks();
             this.$itemsContainer = $("#herreriaContenedorItems");
@@ -34,6 +35,12 @@ define(["text!../../../menus/herreria.html!strip", 'ui/popups/popup'], function 
 
             var self = this;
             for (var item of items) {
+                if (self.items.has(item.Name)) {
+                    continue;
+                } else {
+                    self.items.add(item.Name);
+                }
+                
                 var $row = $('<tr></tr>');
 
                 var numGraf = this.game.assetManager.getNumCssGraficoFromGrh(item.GrhIndex);
@@ -55,12 +62,12 @@ define(["text!../../../menus/herreria.html!strip", 'ui/popups/popup'], function 
                 $row.append($cellRequerimientos);
 
                 var $cellConstruir = $('<td></td>');
-                var $botonConstruir = $('<button class="btn btn-default" >Construir</button>');
+                var $botonConstruir = $('<button class="btn btn-default" >Build</button>');
 
                 $botonConstruir.data("itemIndex", item.ArmasHerreroIndex);
                 $botonConstruir.click(function () {
                     var cantidadAConstruir = $('#herreriaCantidadAConstruir').val();
-                    self.game.client.sendInitCrafting(cantidadAConstruir, 1);//TODO: horrible esto, que se haga de 1 (cambiar sv)
+                    self.game.client.sendInitCrafting(cantidadAConstruir, cantidadAConstruir);
                     var itemIndex = $(this).data("itemIndex");
                     self.game.client.sendCraftBlacksmith(itemIndex);
                 });

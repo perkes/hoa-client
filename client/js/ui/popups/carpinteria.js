@@ -32,6 +32,7 @@ define(["text!../../../menus/carpinteria.html!strip", 'ui/popups/popup'], functi
 
         show(items) {
             super.show();
+            this.$itemsContainer.empty();
             this.setItems(items);
         }
 
