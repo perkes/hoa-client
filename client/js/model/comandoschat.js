@@ -99,7 +99,7 @@ define(['enums', 'font'], function (Enums, Font) {
 
                             break;
                         case "/RESUCITAR":
-                        case "/RESUCITATE":
+                        case "/RESUSCITATE":
                             this.game.client.sendResucitate();
 
                             break;
