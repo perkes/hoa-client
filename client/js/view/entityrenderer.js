@@ -178,7 +178,6 @@ define(['enums', 'utils/util', 'font', 'lib/pixi', 'view/charactersprites', 'vie
                 });
 
                 char.emit('helmetChanged');
-
             }
 
             sacarCharacter(char) {

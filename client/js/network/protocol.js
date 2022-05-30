@@ -6610,8 +6610,8 @@ function ServerPacketDecodeAndDispatch(buffer, handler) {
             var Name = buffer.ReadUnicodeString();
             var NickColor = buffer.ReadByte();
             var Privileges = buffer.ReadByte();
-
-            handler.handleCharacterCreate(CharIndex,Body,Head,Heading,X,Y,Weapon,Shield,Helmet,FX,FXLoops,Name,NickColor,Privileges);
+            var user = buffer.ReadBoolean();
+            handler.handleCharacterCreate(CharIndex,Body,Head,Heading,X,Y,Weapon,Shield,Helmet,FX,FXLoops,Name,NickColor,Privileges,user);
 
             break;
         }

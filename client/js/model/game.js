@@ -196,8 +196,7 @@ define(['model/mapa', 'updater', 'model/item', 'model/character', 'model/atribut
             }
 
             agregarCharacter(CharIndex, Body, Head, Heading, X, Y, Weapon, Shield, Helmet, FX, FXLoops, Name,
-                             NickColor, Privileges) {
-
+                             NickColor, Privileges, user) {
                 let nombre, clan;
                 if (Name.indexOf("<") > 0) {
                     nombre = Name.slice(Name, Name.indexOf("<") - 1);
@@ -221,8 +220,7 @@ define(['model/mapa', 'updater', 'model/item', 'model/character', 'model/atribut
                 var c = new Character(CharIndex, X, Y, Heading, nombre, clan, Body, Head, Weapon, Shield, Helmet, FX, FXLoops, NickColor);
                 this.world.addCharacter(c);
                 this.setCharacterFX(CharIndex, FX, FXLoops);
-
-                if ((!this.player)) { //&& ( this.username.toUpperCase() === nombre.toUpperCase())) { // mal esto, se deberia hacer comparando el charindex pero no se puede porque el server manda el char index del pj despues de crear los chars
+                if (!this.player && user) { // && (this.username.toUpperCase() === nombre.toUpperCase())) { // mal esto, se deberia hacer comparando el charindex pero no se puede porque el server manda el char index del pj despues de crear los chars
                     this.player = c;
                     this.actualizarIndicadorPosMapa();
                 }
