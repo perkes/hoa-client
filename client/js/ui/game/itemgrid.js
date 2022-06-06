@@ -71,6 +71,7 @@ define(['jquery-ui'], function () {
             }
 
             $item.text(cantidad + "");
+            $item.attr("title", objName);
             var url = 'url(graficos/css/' + numGraf + '.png)';
             $item.css('background-image', url);
 
