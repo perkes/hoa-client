@@ -9,7 +9,7 @@ define(["text!../../../menus/comerciar.html!strip", 'ui/popups/popup', 'ui/game/
 
             var options = {
                 width: 615,
-                height: 445,
+                height: 470,
                 minWidth: 250,
                 minHeight: 200
             };

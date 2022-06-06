@@ -7,8 +7,8 @@ define(["text!../../../menus/boveda.html!strip", 'ui/popups/popup', 'ui/game/ite
     class Boveda extends PopUp {
         constructor(game, acciones) {
             var options = {
-                width: 630,
-                height: 510,
+                width: 620,
+                height: 520,
                 minWidth: 250,
                 minHeight: 200
             };
@@ -17,7 +17,7 @@ define(["text!../../../menus/boveda.html!strip", 'ui/popups/popup', 'ui/game/ite
             this.acciones = acciones;
 
             this.shopGrid = new ItemGrid("bovedaGridComprar",40);
-            this.userGrid = new ItemGrid("bovedaGridVender",40);
+            this.userGrid = new ItemGrid("bovedaGridVender",20);
             this.initCallbacks();
             this.completarLabels("","","","","","");
         }
