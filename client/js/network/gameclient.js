@@ -1499,6 +1499,11 @@ define(['../utils/util', 'enums', 'font', 'network/protocol', 'network/bytequeue
             p.serialize(this.byteQueue);
         }
 
+        sendKillNPCNoRespawn() {
+            var p = this.protocolo.BuildKillNPCNoRespawn();
+            p.serialize(this.byteQueue);
+        }
+
         sendWarnUser(UserName, Reason) {
             var p = this.protocolo.BuildWarnUser(UserName, Reason);
             p.serialize(this.byteQueue);

@@ -471,6 +471,10 @@ define(['enums', 'font'], function (Enums, Font) {
                         case "/HORA":
                         case "/TIME":
                             this.game.client.sendServerTime();
+                        case "/MATA":
+                        case "/KILL":
+                                this.game.client.sendKillNPCNoRespawn();
+                                break;
                             break;
                         case "/RMATA":
                         case "/RKILL":
