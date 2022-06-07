@@ -73,8 +73,8 @@ define(['enums'], function (Enums) {
             nombres[Enums.Skill.magia] = "Magic";
             nombres[Enums.Skill.robar] = "Stealing";
             nombres[Enums.Skill.tacticas] = "Evasion";
-            nombres[Enums.Skill.armas] = "Hand-to-hand combat";
-            nombres[Enums.Skill.meditar] = "Meditate";
+            nombres[Enums.Skill.armas] = "Melee combat";
+            nombres[Enums.Skill.meditar] = "Meditation";
             nombres[Enums.Skill.apunalar] = "Stabbing";
             nombres[Enums.Skill.ocultarse] = "Hiding";
             nombres[Enums.Skill.supervivencia] = "Survival";
