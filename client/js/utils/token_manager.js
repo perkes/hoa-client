@@ -8,7 +8,6 @@ define(['utils/wallet', 'json!../../config.json'], function (Wallet, config) {
         
         _activateToken(token, signature, callback) {
             var self = this;
-
             $.get(self.url + '/activate_token', {'token': token, 'signature': signature}, function(resp) {
                 callback(token);
             });

@@ -1,4 +1,4 @@
-define(['storage/storage', 'json!../../config.json'], function (Storage, config) {
+define(['../utils/util', 'storage/storage', 'json!../../config.json'], function (Utils, Storage, config) {
     class Wallet {
 
         constructor() {
@@ -15,6 +15,14 @@ define(['storage/storage', 'json!../../config.json'], function (Storage, config)
 
         async signToken(message) {
             const encodedMessage = new TextEncoder().encode(message);
+            var signedMessage = await window.solflare.signMessage(encodedMessage, 'utf8');
+            signedMessage.signature = Utils.encode_b58(Utils.toHexString(signedMessage.signature))
+            
+            return signedMessage;
+
+            // { signature, publicKey }
+            /*
+            const encodedMessage = new TextEncoder().encode(message);
             const signedMessage = await window.solana.request({
                 method: "signMessage",
                 params: {
@@ -23,12 +31,18 @@ define(['storage/storage', 'json!../../config.json'], function (Storage, config)
                 },
             });
             return signedMessage;
+            */
         }
 
-        getAddress(callback) {
-            window.solana.connect({onlyIfTrusted: false}).then(() => {
-                callback(window.solana.publicKey.toString());
+        async getAddress(callback) {
+            window.solflare.connect().then(() => {
+                callback(window.solflare.publicKey.toString());
             });
+            //const resp = await window.solana.connect();
+            //callback(resp.publicKey.toString());
+            /*window.solana.connect({onlyIfTrusted: false}).then(() => {
+                callback(window.solana.publicKey.toString());
+            });*/
         }
 
         getCharacters(callback) {
@@ -36,8 +50,8 @@ define(['storage/storage', 'json!../../config.json'], function (Storage, config)
             var token_images = Object();
             var token_addresses = Object();
             var self = this;
-            window.solana.connect({onlyIfTrusted: false}).then(() => {
-                var wallet_address = window.solana.publicKey.toString();
+            window.solflare.connect().then(() => {
+                var wallet_address = window.solflare.publicKey.toString();
                 var tokens_url = 'https://public-api.solscan.io/account/tokens?account=' + wallet_address;
                 $.ajax({
                     url: tokens_url,
