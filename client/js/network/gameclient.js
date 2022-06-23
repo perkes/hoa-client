@@ -14,7 +14,7 @@ define(['../utils/util', 'enums', 'font', 'network/protocol', 'network/bytequeue
         }
 
         _connect(conectarse_callback) {
-            this.ws.open("ws://" + config.ip + ":" + config.port);
+            this.ws.open("wss://" + config.ip + ":" + config.port);
             var self = this;
             this.ws.on('open', function () {
                 self.conectado = true;

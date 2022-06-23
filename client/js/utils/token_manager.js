@@ -1,7 +1,7 @@
 define(['utils/wallet', 'json!../../config.json'], function (Wallet, config) {
     class TokenManager {
         constructor() {
-            this.url = 'http://' + config.ip_auth + ':' + config.port_auth;
+            this.url = 'https://' + config.ip_auth + ':' + config.port_auth;
             this.wallet = new Wallet();
             this.token = Object();
         }
@@ -30,6 +30,10 @@ define(['utils/wallet', 'json!../../config.json'], function (Wallet, config) {
             } else {
                 this.wallet.getCharacters(callback);
             }
+        }
+
+        clearCharacters() {
+            this.wallet.clearCharacters();
         }
 
         getToken(nft_address, callback) {

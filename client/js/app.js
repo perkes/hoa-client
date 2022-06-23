@@ -12,7 +12,12 @@ define(['model/gamemanager', 'view/renderer', 'network/gameclient', 'utils/token
         _initLoginCallbacks() {
             var self = this;
             this.uiManager.loginUI.setBotonJugarCallback(function () {
+                self.uiManager.loginUI.hideBotonReload();
                 self.setElegirPJ();
+            });
+
+            this.uiManager.loginUI.setBotonReloadCallback(function () {
+                self.token_manager.clearCharacters();
             });
         }
 

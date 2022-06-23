@@ -11,6 +11,16 @@ define(['utils/charcodemap'], function (CharcodeMap) {
             });
         }
 
+        setBotonReloadCallback(cb) {
+            $('#reloadButton').click(function () {
+                cb();
+            });
+        }
+
+        hideBotonReload() {
+            $('#reloadButton').hide();
+        }
+
         setPlayButtonState(enabled) {
             var $playButton = $('#botonConectar');
 

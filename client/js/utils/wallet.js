@@ -45,6 +45,11 @@ define(['../utils/util', 'storage/storage', 'json!../../config.json'], function 
             });*/
         }
 
+        clearCharacters() {
+            this.storage.removeItem('token_addresses');
+            this.storage.removeItem('token_images');
+        }
+
         getCharacters(callback) {
             var promises = [];
             var token_images = Object();
@@ -65,23 +70,28 @@ define(['../utils/util', 'storage/storage', 'json!../../config.json'], function 
 
                             var tokenAddress = result[i]['tokenAddress'];
                             var url = 'https://api.solscan.io/account?address=' + tokenAddress;
-                            var promise = $.get(url, function(resp, status) {
-                                try {
-                                    if (status == 'success') {
-                                        if (resp['data']['metadata']['updateAuthority'] == 'C1PTKRiUZncRUMyUtek2f8AZR6kjnfBgXTRTXUJafWRA') {
-                                            var nft_number = resp['data']['tokenInfo']['name'].split('#')[1];
-                                            var nft_name = resp['data']['metadata']['data']['name'];
-                                            token_addresses[nft_name] = resp['data']['account']; 
-                                            token_images[nft_name] = 'http://' + config.ip + ':8080/images/' + nft_number + '.png';
+                            var promise = $.ajax({
+                                url: url,
+                                type: 'GET',
+                                success: function(resp, status) {
+                                    try {
+                                        if (status == 'success') {
+                                            if (resp['data']['metadata']['updateAuthority'] == 'C1PTKRiUZncRUMyUtek2f8AZR6kjnfBgXTRTXUJafWRA') {
+                                                var nft_number = resp['data']['tokenInfo']['name'].split('#')[1];
+                                                var nft_name = resp['data']['metadata']['data']['name'];
+                                                token_addresses[nft_name] = resp['data']['account']; 
+                                                token_images[nft_name] = 'https://' + config.ip + ':' + config.http_port + '/images/' + nft_number + '.png';
+                                            }
                                         }
-                                    }
-                                } catch(error) {
+                                    } catch(error) {
 
+                                    }
                                 }
                             });
 
                             promises.push(promise);
                         }
+
                         Promise.all(promises).then(data => {
                             self.storage.setItem('token_addresses', token_addresses);
                             self.storage.setItem('token_images', token_images);
