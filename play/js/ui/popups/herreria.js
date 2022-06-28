@@ -1,0 +1,109 @@
+/**
+ * Created by horacio on 6/20/16.
+ */
+
+define(["text!../../../menus/herreria.html!strip", 'ui/popups/popup'], function (DOMdata, PopUp) {
+
+    class Herreria extends PopUp {
+        constructor(game) {
+
+            var options = {
+                width: 500,
+                height: 400,
+                minWidth: 250,
+                minHeight: 300
+            };
+            super(DOMdata, options);
+
+            this.items = new Set();
+            this.game = game;
+            //this.initCallbacks();
+            this.$itemsContainer = $("#herreriaContenedorItems");
+        }
+
+        /*Item contiene:
+         Name: Name,
+         GrhIndex: GrhIndex,
+         LingH: LingH,
+         LingP: LingP,
+         LingO: LingO,
+         ArmasHerreroIndex: ArmasHerreroIndex,
+         ObjUpgrade: ObjUpgrade,
+         */
+        setItems(items) {
+            //TODO objUpgrade
+
+            var self = this;
+            for (var item of items) {
+                if (self.items.has(item.Name)) {
+                    continue;
+                } else {
+                    self.items.add(item.Name);
+                }
+                
+                var $row = $('<tr></tr>');
+
+                var numGraf = this.game.assetManager.getNumCssGraficoFromGrh(item.GrhIndex);
+                var url = "url(graficos/css/" + numGraf + ".png)";
+
+                var $cell = $('<td></td>');
+                var $imagenItem = $('<div class="divImagen" style="width: 50px; height:50px;"></div>');
+                $imagenItem.css('background-image', url);
+                $cell.append($imagenItem);
+
+                $row.append($cell);
+
+                var $cellNombre = $('<td></td>');
+                var $cellRequerimientos = $('<td></td>');
+                $cellNombre.text(item.Name);
+                $cellRequerimientos.text('Requires iron ingots: ' + item.LingH + " , silver ingots " + item.LingP + " and gold ingots: " + item.LingO);
+                // TODO: graficos madera y madera elfica
+                $row.append($cellNombre);
+                $row.append($cellRequerimientos);
+
+                var $cellConstruir = $('<td></td>');
+                var $botonConstruir = $('<button class="btn btn-default" >Build</button>');
+
+                $botonConstruir.data("itemIndex", item.ArmasHerreroIndex);
+                $botonConstruir.click(function () {
+                    var cantidadAConstruir = $('#herreriaCantidadAConstruir').val();
+                    self.game.client.sendInitCrafting(cantidadAConstruir, cantidadAConstruir);
+                    var itemIndex = $(this).data("itemIndex");
+                    self.game.client.sendCraftBlacksmith(itemIndex);
+                });
+                $cellConstruir.append($botonConstruir);
+                $row.append($cellConstruir);
+                this.$itemsContainer.append($row);
+            }
+        }
+
+        setWeapons(items) {
+            /*Item contiene:
+             Name: Name,
+             GrhIndex: GrhIndex,
+             LingH: LingH,
+             LingP: LingP,
+             LingO: LingO,
+             ArmasHerreroIndex: ArmasHerreroIndex,
+             ObjUpgrade: ObjUpgrade,
+             */
+            this.setItems(items);
+        }
+
+        setArmors(items) {
+            /* Item contiene
+             Name: Name,
+             GrhIndex: GrhIndex,
+             LingH: LingH,
+             LingP: LingP,
+             LingO: LingO,
+             ArmasHerreroIndex: ArmasHerreroIndex,
+             ObjUpgrade: ObjUpgrade,
+             */
+            this.setItems(items);
+        }
+    }
+
+    return Herreria;
+});
+
