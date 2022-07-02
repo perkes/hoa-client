@@ -15,34 +15,35 @@ define(['../utils/util', 'storage/storage', 'json!../../config.json'], function 
 
         async signToken(message) {
             const encodedMessage = new TextEncoder().encode(message);
-            var signedMessage = await window.solflare.signMessage(encodedMessage, 'utf8');
-            signedMessage.signature = Utils.encode_b58(Utils.toHexString(signedMessage.signature))
+            var signedMessage;
+            if (window.solana) {
+                signedMessage = await window.solana.request({
+                    method: "signMessage",
+                    params: {
+                        message: encodedMessage,
+                        display: "hex",
+                    },
+                });
+            } else {
+                signedMessage = await window.solflare.signMessage(encodedMessage, 'utf8');
+                signedMessage.signature = Utils.encode_b58(Utils.toHexString(signedMessage.signature));
+            }
             
             return signedMessage;
-
-            // { signature, publicKey }
-            /*
-            const encodedMessage = new TextEncoder().encode(message);
-            const signedMessage = await window.solana.request({
-                method: "signMessage",
-                params: {
-                    message: encodedMessage,
-                    display: "hex",
-                },
-            });
-            return signedMessage;
-            */
         }
 
         async getAddress(callback) {
-            window.solflare.connect().then(() => {
-                callback(window.solflare.publicKey.toString());
-            });
-            //const resp = await window.solana.connect();
-            //callback(resp.publicKey.toString());
-            /*window.solana.connect({onlyIfTrusted: false}).then(() => {
-                callback(window.solana.publicKey.toString());
-            });*/
+            if (window.solana) {
+                const resp = await window.solana.connect();
+                callback(resp.publicKey.toString());
+                //window.solana.connect({onlyIfTrusted: false}).then(() => {
+                 //   callback(window.solana.publicKey.toString());
+                //});
+            } else {
+                window.solflare.connect().then(() => {
+                    callback(window.solflare.publicKey.toString());
+                });
+            }
         }
 
         clearCharacters() {
@@ -55,8 +56,16 @@ define(['../utils/util', 'storage/storage', 'json!../../config.json'], function 
             var token_images = Object();
             var token_addresses = Object();
             var self = this;
-            window.solflare.connect().then(() => {
-                var wallet_address = window.solflare.publicKey.toString();
+            var wallet = '';
+
+            if (window.solana) {
+                wallet = 'solana';
+            } else {
+                wallet = 'solflare';
+            }
+            console.log(wallet);
+            window[wallet].connect().then(() => {
+                var wallet_address = window[wallet].publicKey.toString();
                 var tokens_url = 'https://public-api.solscan.io/account/tokens?account=' + wallet_address;
                 $.ajax({
                     url: tokens_url,
@@ -80,7 +89,7 @@ define(['../utils/util', 'storage/storage', 'json!../../config.json'], function 
                                                 var nft_number = resp['data']['tokenInfo']['name'].split('#')[1];
                                                 var nft_name = resp['data']['metadata']['data']['name'];
                                                 token_addresses[nft_name] = resp['data']['account']; 
-                                                token_images[nft_name] = 'https://' + config.ip + ':' + config.http_port + '/images/' + nft_number + '.png';
+                                                token_images[nft_name] = 'https://' + config.ip + ':' + config.http_port + '/play/images/' + nft_number + '.png';
                                             }
                                         }
                                     } catch(error) {
