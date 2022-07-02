@@ -8095,6 +8095,10 @@ footer a {
 .intro #juego {
   display: none; }
 
+.footer_logo {
+  margin: 5px;
+}
+
 #logo {
   background: url("../imagenes/logo.png");
   background-size: contain;
