@@ -7970,6 +7970,15 @@ body {
   right: 0;
   margin: auto; }
 
+#mintPlayBox {
+  margin: 75px;
+}
+
+#botonMint , #botonPlay {
+  display:inline-block;
+  margin: 20px;
+}
+
 .login #container, .jugar #container, .crear #container {
   display: block; }
 
